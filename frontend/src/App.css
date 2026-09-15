@@ -1,0 +1,405 @@
+/* =========================
+   GLOBAL
+========================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f8f6;
+  color: #222;
+}
+
+
+/* =========================
+   LOGIN & REGISTER
+========================= */
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8f6;
+  padding: 20px;
+}
+
+.login-card {
+  width: 400px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.login-card h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.login-card > p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-card button:hover {
+  background: #43a047;
+}
+
+.register-text {
+  margin-top: 20px !important;
+  margin-bottom: 0 !important;
+  font-size: 14px;
+}
+
+.register-text a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+.app {
+  min-height: 100vh;
+}
+
+.navbar {
+  height: 65px;
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+}
+
+.nav-links a:hover {
+  color: #4caf50;
+}
+
+.logout-btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard {
+  min-height: calc(100vh - 65px);
+  padding: 40px;
+  background: #f4f8f6;
+}
+
+.dashboard h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 22px;
+}
+
+
+/* =========================
+   MACRO BARS
+========================= */
+
+.macro-item {
+  margin-bottom: 20px;
+}
+
+.macro-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.macro-label {
+  font-weight: bold;
+}
+
+.macro-value {
+  color: #666;
+  font-size: 14px;
+}
+
+.macro-track {
+  width: 100%;
+  height: 10px;
+  background: #e8e8e8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.macro-fill {
+  height: 100%;
+  background: #4caf50;
+  border-radius: 10px;
+}
+
+
+/* =========================
+   CALORIES & WEIGHT
+========================= */
+
+.calorie-number,
+.weight-number {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #666;
+}
+
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8f6;
+  padding: 40px 20px;
+}
+
+.profile-card {
+  width: 600px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card h1 {
+  margin-bottom: 10px;
+}
+
+.profile-card > p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.profile-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-card input,
+.profile-card select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.profile-card input:focus,
+.profile-card select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.profile-card button {
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8f6;
+  padding: 40px 20px;
+}
+
+.progress-card {
+  width: 700px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.progress-card h1 {
+  margin-bottom: 10px;
+}
+
+.progress-card > p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.progress-placeholder {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f5f7f9;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  color: #777;
+}
+
+.progress-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.progress-stats div {
+  padding: 20px;
+  background: #f5f7f9;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.progress-stats h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.progress-stats p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .dashboard {
+    padding: 25px;
+  }
+
+  .progress-stats {
+    grid-template-columns: 1fr;
+  }
+}
