@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 function Login() {
+    const navigate = useNavigate();
   return (
     <div className="login-page">
       <div className="login-card">
@@ -6,7 +9,10 @@ function Login() {
 
         <p>Login to your health dashboard</p>
 
-        <form>
+        <form onSubmit={(e) => {
+  e.preventDefault();
+  navigate("/dashboard");
+}}>
           <input
             type="email"
             placeholder="Email"

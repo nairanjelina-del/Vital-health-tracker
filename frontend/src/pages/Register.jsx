@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Register() {
+  const navigate = useNavigate();
   return (
     <div className="login-page">
       <div className="login-card">
@@ -7,7 +8,10 @@ function Register() {
 
         <p>Create your account</p>
 
-        <form>
+       <form onSubmit={(e) => {
+  e.preventDefault();
+  navigate("/dashboard");
+}}>
           <input
             type="text"
             placeholder="Full Name"

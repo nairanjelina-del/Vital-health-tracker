@@ -5,6 +5,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import Progress from "./pages/Progress";
+import FoodLog from "./pages/FoodLog";
+import ExerciseLog from "./pages/ExerciseLog";
 import "./App.css";
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
       <Routes>
 
         <Route path="/" element={<Login />} />
+
         <Route path="/register" element={<Register />} />
 
         <Route
@@ -25,9 +28,45 @@ function App() {
           }
         />
 
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/progress" element={<Progress />} />
+        <Route
+          path="/profile"
+          element={
+            <>
+              <Navbar />
+              <Profile />
+            </>
+          }
+        />
 
+        <Route
+          path="/progress"
+          element={
+            <>
+              <Navbar />
+              <Progress />
+            </>
+          }
+        />
+
+        <Route
+          path="/food-log"
+          element={
+            <>
+              <Navbar />
+              <FoodLog />
+            </>
+          }
+        />
+
+<Route
+  path="/exercise-log"
+  element={
+    <>
+      <Navbar />
+      <ExerciseLog />
+    </>
+  }
+/>
       </Routes>
     </BrowserRouter>
   );
