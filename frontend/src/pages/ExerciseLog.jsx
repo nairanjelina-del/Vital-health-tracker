@@ -5,17 +5,38 @@ function ExerciseLog() {
     type: "Walking",
     duration: "",
     calories: "",
+    date: new Date().toISOString().split("T")[0],
   });
 
   const [exercises, setExercises] = useState([]);
 
   useEffect(() => {
-    const savedExercises = localStorage.getItem("vitalExercises");
+    const savedExercises =
+      localStorage.getItem("vitalExercises");
 
     if (savedExercises) {
       setExercises(JSON.parse(savedExercises));
     }
   }, []);
+
+  const today = new Date().toISOString().split("T")[0];
+
+  const todaysExercises = exercises.filter(
+    (item) => item.date === today
+  );
+
+  const exerciseTotals = todaysExercises.reduce(
+    (total, item) => ({
+      duration:
+        total.duration + Number(item.duration),
+      calories:
+        total.calories + Number(item.calories),
+    }),
+    {
+      duration: 0,
+      calories: 0,
+    }
+  );
 
   const handleChange = (e) => {
     setExercise({
@@ -27,7 +48,10 @@ function ExerciseLog() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const updatedExercises = [...exercises, exercise];
+    const updatedExercises = [
+      ...exercises,
+      exercise,
+    ];
 
     setExercises(updatedExercises);
 
@@ -40,7 +64,21 @@ function ExerciseLog() {
       type: "Walking",
       duration: "",
       calories: "",
+      date: new Date().toISOString().split("T")[0],
     });
+  };
+
+  const handleDelete = (itemToDelete) => {
+    const updatedExercises = exercises.filter(
+      (item) => item !== itemToDelete
+    );
+
+    setExercises(updatedExercises);
+
+    localStorage.setItem(
+      "vitalExercises",
+      JSON.stringify(updatedExercises)
+    );
   };
 
   return (
@@ -52,6 +90,8 @@ function ExerciseLog() {
         <p>
           Track your daily physical activity and stay active.
         </p>
+
+        {/* EXERCISE FORM */}
 
         <form onSubmit={handleSubmit}>
 
@@ -92,19 +132,59 @@ function ExerciseLog() {
 
         </form>
 
-        <div className="exercise-history">
+        {/* TODAY'S EXERCISE SUMMARY */}
+
+        <div className="exercise-summary">
 
           <h2>Today's Exercise</h2>
 
-          {exercises.length === 0 ? (
-            <p>No exercise added yet.</p>
+          <div className="exercise-summary-grid">
+
+            <div>
+              <strong>
+                {exerciseTotals.duration}
+              </strong>
+
+              <span> min</span>
+
+              <p>Duration</p>
+            </div>
+
+            <div>
+              <strong>
+                {exerciseTotals.calories}
+              </strong>
+
+              <span> kcal</span>
+
+              <p>Calories Burned</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* TODAY'S EXERCISE HISTORY */}
+
+        <div className="exercise-history">
+
+          <h2>Today's Activities</h2>
+
+          {todaysExercises.length === 0 ? (
+            <p>No exercise added today.</p>
           ) : (
-            exercises.map((item, index) => (
-              <div className="exercise-item" key={index}>
+            todaysExercises.map((item, index) => (
+              <div
+                className="exercise-item"
+                key={index}
+              >
 
                 <div>
                   <strong>{item.type}</strong>
-                  <p>{item.duration} minutes</p>
+
+                  <p>
+                    {item.duration} minutes
+                  </p>
                 </div>
 
                 <span>
@@ -113,17 +193,9 @@ function ExerciseLog() {
 
                 <button
                   type="button"
-                  onClick={() => {
-                    const updatedExercises =
-                      exercises.filter((_, i) => i !== index);
-
-                    setExercises(updatedExercises);
-
-                    localStorage.setItem(
-                      "vitalExercises",
-                      JSON.stringify(updatedExercises)
-                    );
-                  }}
+                  onClick={() =>
+                    handleDelete(item)
+                  }
                 >
                   Delete
                 </button>

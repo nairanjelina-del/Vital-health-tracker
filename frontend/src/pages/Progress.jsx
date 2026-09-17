@@ -28,7 +28,7 @@ function Progress() {
     setWeightHistory(JSON.parse(savedWeights));
   }
 }, []);
-  const weightData =
+    const weightData =
   weightHistory.length > 0
     ? weightHistory
     : [
@@ -37,6 +37,15 @@ function Progress() {
           weight: Number(profile.currentWeight) || 0,
         },
       ];
+
+  const recentWeights = weightHistory.slice(-3);
+
+  const isPlateau =
+    recentWeights.length >= 3 &&
+    Math.max(...recentWeights.map((item) => Number(item.weight))) -
+      Math.min(...recentWeights.map((item) => Number(item.weight))) <= 0.5;
+
+
 
   return (
     <div className="progress-page">
@@ -112,7 +121,7 @@ function Progress() {
             </LineChart>
           </ResponsiveContainer>
         </div>
-                </div>
+                
 
         <div className="weight-history">
           <h2>Weight History</h2>
@@ -129,16 +138,16 @@ function Progress() {
           )}
         </div>
 
-        <div className="plateau-alert">
+       {isPlateau &&  (
+  <div className="plateau-alert">
+    <h2>⚠️ Plateau Alert</h2>
 
-        <div className="plateau-alert">
-          <h2>⚠️ Plateau Alert</h2>
-
-          <p>
-            Your weight has remained stable recently.
-            Consider reviewing your nutrition and activity.
-          </p>
-        </div>
+    <p>
+      Your weight has remained stable recently.
+      Consider reviewing your nutrition and activity.
+    </p>
+  </div>
+)} 
 
         <div className="progress-stats">
 
@@ -160,7 +169,8 @@ function Progress() {
         </div>
 
       </div>
-    </div>
+      </div>
+   
   );
 }
 

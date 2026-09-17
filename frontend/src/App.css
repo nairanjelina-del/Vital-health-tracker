@@ -126,10 +126,8 @@ body {
 }
 
 .logo {
-  font-family: 'Poppins', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-size: 26px;
+  font-weight: bold;
 }
 
 .nav-links {
@@ -775,5 +773,217 @@ body {
   .profile-card,
   .progress-card {
     padding: 20px;
+  }
+}
+
+/* =========================================
+   EXERCISE LOG
+========================================= */
+
+.exercise-page {
+  min-height: calc(100vh - 65px);
+  padding: 40px 20px;
+  background: #f4f8f6;
+}
+
+.exercise-card {
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.exercise-card h1 {
+  margin-bottom: 10px;
+  font-size: 34px;
+  color: #172b4d;
+}
+
+.exercise-card > p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+
+/* =========================================
+   EXERCISE FORM
+========================================= */
+
+.exercise-card form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.exercise-card input,
+.exercise-card select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.exercise-card input:focus,
+.exercise-card select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.exercise-card form button {
+  padding: 13px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.exercise-card form button:hover {
+  background: #43a047;
+}
+
+
+/* =========================================
+   TODAY'S EXERCISE
+========================================= */
+
+.exercise-summary {
+  margin-top: 25px;
+  padding: 20px;
+  background: #f5f7f9;
+  border-radius: 12px;
+}
+
+.exercise-summary h2 {
+  margin-bottom: 18px;
+  font-size: 21px;
+}
+
+.exercise-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.exercise-summary-grid > div {
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+
+.exercise-summary-grid strong {
+  font-size: 28px;
+  color: #4caf50;
+}
+
+.exercise-summary-grid span {
+  color: #666;
+}
+
+.exercise-summary-grid p {
+  margin-top: 7px;
+  color: #666;
+  font-size: 14px;
+}
+
+
+/* =========================================
+   TODAY'S ACTIVITIES
+========================================= */
+
+.exercise-history {
+  margin-top: 30px;
+}
+
+.exercise-history h2 {
+  margin-bottom: 15px;
+}
+
+.exercise-history > p {
+  padding: 15px;
+  background: #f5f7f9;
+  border-radius: 10px;
+  color: #666;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #f5f7f9;
+  border-radius: 10px;
+}
+
+.exercise-item strong {
+  font-size: 16px;
+}
+
+.exercise-item p {
+  margin-top: 5px;
+  color: #666;
+  font-size: 14px;
+}
+
+.exercise-item > span {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.exercise-item button {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #e53935;
+  color: white;
+  cursor: pointer;
+}
+
+.exercise-item button:hover {
+  background: #c62828;
+}
+
+
+/* =========================================
+   EXERCISE MOBILE
+========================================= */
+
+@media (max-width: 800px) {
+
+  .exercise-page {
+    padding: 25px 15px;
+  }
+
+  .exercise-card {
+    padding: 25px;
+  }
+
+  .exercise-card form {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-item {
+    flex-wrap: wrap;
+  }
+
+  .exercise-item button {
+    width: 100%;
   }
 }

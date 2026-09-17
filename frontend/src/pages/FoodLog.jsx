@@ -8,44 +8,56 @@ function FoodLog() {
     protein: "",
     carbs: "",
     fat: "",
+    date: new Date().toISOString().split("T")[0],
   });
 
   const [foods, setFoods] = useState([]);
+
   useEffect(() => {
-  const savedFoods = localStorage.getItem("vitalFoods");
+    const savedFoods = localStorage.getItem("vitalFoods");
 
-  if (savedFoods) {
-    setFoods(JSON.parse(savedFoods));
-  }
-}, []);
+    if (savedFoods) {
+      setFoods(JSON.parse(savedFoods));
+    }
+  }, []);
 
-  const totals = foods.reduce(
-  (total, item) => ({
-    calories: total.calories + Number(item.calories),
-    protein: total.protein + Number(item.protein),
-    carbs: total.carbs + Number(item.carbs),
-    fat: total.fat + Number(item.fat),
-  }),
-  {
-    calories: 0,
-    protein: 0,
-    carbs: 0,
-    fat: 0,
-  }
-);
+  // Today's date
+  const today = new Date().toISOString().split("T")[0];
 
-const foodSuggestions = [
-  "Poha",
-  "Dal Rice",
-  "Roti",
-  "Paneer",
-  "Banana",
-  "Apple",
-  "Idli",
-  "Dosa",
-  "Upma",
-  "Vegetable Pulao",
-];
+  // Only today's food entries
+  const todaysFoods = foods.filter(
+    (item) => item.date === today
+  );
+
+  // Calculate today's nutrition
+  const totals = todaysFoods.reduce(
+    (total, item) => ({
+      calories: total.calories + Number(item.calories),
+      protein: total.protein + Number(item.protein),
+      carbs: total.carbs + Number(item.carbs),
+      fat: total.fat + Number(item.fat),
+    }),
+    {
+      calories: 0,
+      protein: 0,
+      carbs: 0,
+      fat: 0,
+    }
+  );
+
+  // Food suggestions
+  const foodSuggestions = [
+    "Poha",
+    "Dal Rice",
+    "Roti",
+    "Paneer",
+    "Banana",
+    "Apple",
+    "Idli",
+    "Dosa",
+    "Upma",
+    "Vegetable Pulao",
+  ];
 
   const handleChange = (e) => {
     setFood({
@@ -59,13 +71,14 @@ const foodSuggestions = [
 
     const updatedFoods = [...foods, food];
 
-setFoods(updatedFoods);
+    setFoods(updatedFoods);
 
-localStorage.setItem(
-  "vitalFoods",
-  JSON.stringify(updatedFoods)
-);
+    localStorage.setItem(
+      "vitalFoods",
+      JSON.stringify(updatedFoods)
+    );
 
+    // Reset form
     setFood({
       meal: "Breakfast",
       name: "",
@@ -73,19 +86,34 @@ localStorage.setItem(
       protein: "",
       carbs: "",
       fat: "",
+      date: new Date().toISOString().split("T")[0],
     });
+  };
+
+  const handleDelete = (itemToDelete) => {
+    const updatedFoods = foods.filter(
+      (item) => item !== itemToDelete
+    );
+
+    setFoods(updatedFoods);
+
+    localStorage.setItem(
+      "vitalFoods",
+      JSON.stringify(updatedFoods)
+    );
   };
 
   return (
     <div className="foodlog-page">
       <div className="foodlog-card">
 
-        <h1>Food Log </h1>
+        <h1>Food Log 🍽️</h1>
 
         <p>
           Track what you eat and stay on top of your daily nutrition.
         </p>
 
+        {/* FOOD FORM */}
         <form onSubmit={handleSubmit}>
 
           <select
@@ -100,36 +128,39 @@ localStorage.setItem(
           </select>
 
           <input
-  type="text"
-  name="name"
-  placeholder="Food name"
-  value={food.name}
-  onChange={handleChange}
-  required
-/>
+            type="text"
+            name="name"
+            placeholder="Food name"
+            value={food.name}
+            onChange={handleChange}
+            required
+          />
 
-{food.name && (
-  <div className="suggestions">
-    {foodSuggestions
-      .filter((item) =>
-        item.toLowerCase().includes(food.name.toLowerCase())
-      )
-      .map((item, index) => (
-       <div
-  className="suggestion-item"
-  key={index}
-  onClick={() => {
-    setFood({
-      ...food,
-      name: item,
-    });
-  }}
->
-  {item}
-</div>
-      ))}
-  </div>
-)}
+          {/* AUTOCOMPLETE */}
+          {food.name && (
+            <div className="suggestions">
+              {foodSuggestions
+                .filter((item) =>
+                  item
+                    .toLowerCase()
+                    .includes(food.name.toLowerCase())
+                )
+                .map((item, index) => (
+                  <div
+                    className="suggestion-item"
+                    key={index}
+                    onClick={() => {
+                      setFood({
+                        ...food,
+                        name: item,
+                      });
+                    }}
+                  >
+                    {item}
+                  </div>
+                ))}
+            </div>
+          )}
 
           <input
             type="number"
@@ -172,68 +203,74 @@ localStorage.setItem(
           </button>
 
         </form>
+
+        {/* TODAY'S NUTRITION */}
         <div className="nutrition-summary">
-  <h2>Today's Nutrition</h2>
 
-  <div className="nutrition-grid">
-    <div>
-      <strong>{totals.calories}</strong>
-      <span> kcal</span>
-      <p>Calories</p>
-    </div>
+          <h2>Today's Nutrition</h2>
 
-    <div>
-      <strong>{totals.protein}</strong>
-      <span> g</span>
-      <p>Protein</p>
-    </div>
+          <div className="nutrition-grid">
 
-    <div>
-      <strong>{totals.carbs}</strong>
-      <span> g</span>
-      <p>Carbs</p>
-    </div>
+            <div>
+              <strong>{totals.calories}</strong>
+              <span> kcal</span>
+              <p>Calories</p>
+            </div>
 
-    <div>
-      <strong>{totals.fat}</strong>
-      <span> g</span>
-      <p>Fat</p>
-    </div>
-  </div>
-</div>
+            <div>
+              <strong>{totals.protein}</strong>
+              <span> g</span>
+              <p>Protein</p>
+            </div>
 
+            <div>
+              <strong>{totals.carbs}</strong>
+              <span> g</span>
+              <p>Carbs</p>
+            </div>
+
+            <div>
+              <strong>{totals.fat}</strong>
+              <span> g</span>
+              <p>Fat</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* TODAY'S MEALS */}
         <div className="meal-section">
+
           <h2>Today's Meals</h2>
 
-          {foods.length === 0 ? (
-            <p>No food added yet.</p>
+          {todaysFoods.length === 0 ? (
+            <p>No food added today.</p>
           ) : (
-            foods.map((item, index) => (
-  <div className="meal-item" key={index}>
-    <div>
-      <strong>{item.name}</strong>
-      <span> ({item.meal})</span>
-    </div>
+            todaysFoods.map((item, index) => (
+              <div
+                className="meal-item"
+                key={index}
+              >
 
-    <span>{item.calories} kcal</span>
+                <div>
+                  <strong>{item.name}</strong>
+                  <span> ({item.meal})</span>
+                </div>
 
-    <button
-      type="button"
-     onClick={() => {
-  const updatedFoods = foods.filter((_, i) => i !== index);
+                <span>
+                  {item.calories} kcal
+                </span>
 
-  setFoods(updatedFoods);
+                <button
+                  type="button"
+                  onClick={() => handleDelete(item)}
+                >
+                  Delete
+                </button>
 
-  localStorage.setItem(
-    "vitalFoods",
-    JSON.stringify(updatedFoods)
-  );
-}}
-    >
-      Delete
-    </button>
-  </div>
-))
+              </div>
+            ))
           )}
 
         </div>
