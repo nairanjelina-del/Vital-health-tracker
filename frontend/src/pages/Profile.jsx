@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 
 function Profile() {
-    const [profile, setProfile] = useState({
+ const [profile, setProfile] = useState({
   age: "",
   gender: "",
   height: "",
   currentWeight: "",
   goalWeight: "",
   goal: "",
+  diet: "",
 });
 useEffect(() => {
   const savedProfile = localStorage.getItem("vitalProfile");
@@ -96,6 +97,18 @@ useEffect(() => {
   <option value="loss">Weight Loss</option>
   <option value="gain">Weight Gain</option>
   <option value="maintenance">Weight Maintenance</option>
+</select>
+<select
+  name="diet"
+  value={profile.diet}
+  onChange={(e) =>
+    setProfile({ ...profile, diet: e.target.value })
+  }
+>
+  <option value="">Select Diet Preference</option>
+  <option value="vegetarian">Vegetarian</option>
+  <option value="eggetarian">Eggetarian</option>
+  <option value="non-vegetarian">Non-Vegetarian</option>
 </select>
           
 

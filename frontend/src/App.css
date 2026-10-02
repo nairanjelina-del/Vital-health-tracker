@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
-/* =========================
+
+/* =========================================================
    GLOBAL
-========================= */
+========================================================= */
 
 * {
   box-sizing: border-box;
@@ -23,9 +24,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    LOGIN & REGISTER
-========================= */
+========================================================= */
 
 .login-page {
   min-height: 100vh;
@@ -106,9 +107,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    NAVBAR
-========================= */
+========================================================= */
 
 .app {
   min-height: 100vh;
@@ -123,11 +124,15 @@ body {
   justify-content: space-between;
   padding: 0 40px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 100;
 }
 
 .logo {
-  font-size: 26px;
-  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .nav-links {
@@ -159,9 +164,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    DASHBOARD
-========================= */
+========================================================= */
 
 .dashboard {
   min-height: calc(100vh - 65px);
@@ -197,10 +202,14 @@ body {
   margin-bottom: 22px;
 }
 
+.card p {
+  color: #666;
+}
 
-/* =========================
+
+/* =========================================================
    MACRO BARS
-========================= */
+========================================================= */
 
 .macro-item {
   margin-bottom: 20px;
@@ -236,9 +245,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    CALORIES & WEIGHT
-========================= */
+========================================================= */
 
 .calorie-number,
 .weight-number {
@@ -247,21 +256,21 @@ body {
   margin-bottom: 10px;
 }
 
-.card p {
-  color: #666;
-}
 
-
-/* =========================
-   AI SUGGESTIONS
-========================= */
+/* =========================================================
+   AI DAILY RECOMMENDATIONS
+========================================================= */
 
 .ai-suggestions {
   margin-top: 30px;
   background: white;
   padding: 25px;
-  border-radius: 12px;
+  border-radius: 16px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.ai-suggestions h2 {
+  margin-bottom: 8px;
 }
 
 .ai-suggestions > p {
@@ -278,7 +287,8 @@ body {
 .suggestion-card {
   padding: 18px;
   background: #f5f7f9;
-  border-radius: 10px;
+  border-radius: 12px;
+  border: 1px solid #edf0f0;
 }
 
 .suggestion-card h3 {
@@ -289,12 +299,72 @@ body {
 .suggestion-card p {
   color: #666;
   font-size: 14px;
+  line-height: 1.5;
+}
+
+.suggestion-card strong {
+  color: #222;
 }
 
 
-/* =========================
+/* =========================================================
+   WATER TRACKER
+========================================================= */
+
+.water-section {
+  margin-top: 25px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.water-section h2 {
+  margin-bottom: 15px;
+}
+
+.water-count {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.water-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.water-btn {
+  padding: 9px 15px !important;
+  border: none !important;
+  border-radius: 7px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.water-btn:hover {
+  background: #43a047 !important;
+}
+
+.water-reset-btn {
+  padding: 9px 15px !important;
+  border: none !important;
+  border-radius: 7px !important;
+  background: #e8f5e9 !important;
+  color: #2e7d32 !important;
+  cursor: pointer !important;
+}
+
+.water-reset-btn:hover {
+  background: #c8e6c9 !important;
+}
+
+
+/* =========================================================
    PROFILE
-========================= */
+========================================================= */
 
 .profile-page {
   min-height: 100vh;
@@ -361,9 +431,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    FOOD LOG
-========================= */
+========================================================= */
 
 .foodlog-page {
   min-height: 100vh;
@@ -428,9 +498,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    FOOD SUGGESTIONS
-========================= */
+========================================================= */
 
 .suggestions {
   border: 1px solid #ddd;
@@ -449,9 +519,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    NUTRITION SUMMARY
-========================= */
+========================================================= */
 
 .nutrition-summary {
   margin-top: 30px;
@@ -485,9 +555,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    MEALS
-========================= */
+========================================================= */
 
 .meal-section {
   margin-top: 30px;
@@ -513,18 +583,22 @@ body {
 }
 
 .meal-item button {
-  padding: 7px 12px;
-  border: none;
-  border-radius: 6px;
-  background: #e53935;
-  color: white;
-  cursor: pointer;
+  padding: 7px 12px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.meal-item button:hover {
+  background: #43a047 !important;
 }
 
 
-/* =========================
+/* =========================================================
    PROGRESS
-========================= */
+========================================================= */
 
 .progress-page {
   min-height: 100vh;
@@ -554,9 +628,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    WEIGHT FORM
-========================= */
+========================================================= */
 
 .progress-card form {
   display: flex;
@@ -591,9 +665,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    PROGRESS CHART
-========================= */
+========================================================= */
 
 .progress-chart {
   width: 100%;
@@ -602,9 +676,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    WEIGHT HISTORY
-========================= */
+========================================================= */
 
 .weight-history {
   margin-top: 25px;
@@ -637,9 +711,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    PLATEAU ALERT
-========================= */
+========================================================= */
 
 .plateau-alert {
   margin-top: 25px;
@@ -661,9 +735,9 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
    PROGRESS STATS
-========================= */
+========================================================= */
 
 .progress-stats {
   display: grid;
@@ -689,9 +763,525 @@ body {
 }
 
 
-/* =========================
+/* =========================================================
+   EXERCISE LOG
+========================================================= */
+
+.exercise-page {
+  min-height: calc(100vh - 65px);
+  padding: 40px 20px;
+  background: #f4f8f6;
+}
+
+.exercise-card {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 35px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.exercise-card h1 {
+  margin: 0 0 8px;
+  font-size: 34px;
+  color: #172b4d;
+}
+
+.exercise-card > p {
+  margin: 0 0 30px;
+  color: #667085;
+  font-size: 16px;
+}
+
+
+/* Exercise form */
+
+.exercise-card form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.exercise-card select,
+.exercise-card input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+.exercise-card select:focus,
+.exercise-card input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+}
+
+.exercise-card form button {
+  padding: 13px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.exercise-card form button:hover {
+  background: #43a047;
+}
+
+
+/* Today's exercise */
+
+.exercise-summary {
+  padding: 25px;
+  background: #f7fbf8;
+  border: 1px solid #e2eee5;
+  border-radius: 16px;
+}
+
+.exercise-summary h2 {
+  margin-bottom: 20px;
+  color: #172b4d;
+}
+
+.exercise-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.exercise-summary-grid > div {
+  padding: 22px;
+  background: white;
+  border: 1px solid #e8eee9;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.exercise-summary-grid strong {
+  font-size: 30px;
+  color: #4caf50;
+}
+
+.exercise-summary-grid span {
+  font-size: 16px;
+  color: #667085;
+}
+
+.exercise-summary-grid p {
+  margin: 8px 0 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+
+/* Today's activities */
+
+.exercise-history {
+  margin-top: 30px;
+}
+
+.exercise-history h2 {
+  margin-bottom: 18px;
+  color: #172b4d;
+}
+
+.exercise-history > p {
+  padding: 18px;
+  background: #f8faf9;
+  border-radius: 12px;
+  color: #667085;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  background: #f8faf9;
+  border: 1px solid #e5ebe7;
+  border-radius: 14px;
+}
+
+.exercise-item strong {
+  color: #172b4d;
+  font-size: 16px;
+}
+
+.exercise-item p {
+  margin: 5px 0 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+.exercise-item > span {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.exercise-item button {
+  padding: 8px 14px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  font-weight: 600;
+  cursor: pointer !important;
+}
+
+.exercise-item button:hover {
+  background: #43a047 !important;
+}
+
+
+/* =========================================================
+   VITAL CHATBOT
+========================================================= */
+
+/* Floating chat button */
+
+.vital-chat-button {
+  position: fixed !important;
+  right: 25px !important;
+  bottom: 25px !important;
+
+  width: 60px !important;
+  height: 60px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  font-size: 26px !important;
+  line-height: 1 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22) !important;
+
+  z-index: 99999 !important;
+}
+
+.vital-chat-button:hover {
+  background: #43a047 !important;
+  transform: scale(1.05);
+}
+
+
+/* Chat window */
+
+.vital-chatbot {
+  position: fixed !important;
+
+  right: 25px !important;
+  bottom: 100px !important;
+
+  width: 380px !important;
+  height: 560px !important;
+
+  background: white !important;
+
+  border: 1px solid #e2e6e3 !important;
+  border-radius: 18px !important;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22) !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  overflow: hidden !important;
+
+  z-index: 99998 !important;
+}
+
+
+/* Chat header */
+
+.vital-chat-header {
+  flex-shrink: 0 !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  padding: 17px 18px !important;
+
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.vital-chat-header strong {
+  display: block !important;
+
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.vital-chat-header span {
+  display: block !important;
+
+  margin-top: 3px !important;
+
+  font-size: 12px !important;
+
+  opacity: 0.9 !important;
+}
+
+
+/* Close button */
+
+.vital-chat-close {
+  width: 34px !important;
+  height: 34px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: transparent !important;
+  color: white !important;
+
+  font-size: 25px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+}
+
+.vital-chat-close:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+
+/* Messages */
+
+.vital-chat-messages {
+  flex: 1 !important;
+
+  min-height: 0 !important;
+
+  padding: 18px !important;
+
+  overflow-y: auto !important;
+
+  background: #f6f8f7 !important;
+}
+
+.chat-message {
+  margin-bottom: 16px !important;
+}
+
+.chat-message.user {
+  text-align: right !important;
+}
+
+.chat-message.bot {
+  text-align: left !important;
+}
+
+
+/* Chat bubble */
+
+.chat-bubble {
+  display: inline-block !important;
+
+  max-width: 82% !important;
+
+  padding: 11px 14px !important;
+
+  border-radius: 14px !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.5 !important;
+
+  text-align: left !important;
+
+  word-wrap: break-word !important;
+}
+
+
+/* Bot bubble */
+
+.chat-message.bot .chat-bubble {
+  background: white !important;
+
+  color: #333 !important;
+
+  border: 1px solid #e2e6e3 !important;
+
+  border-bottom-left-radius: 4px !important;
+}
+
+
+/* User bubble */
+
+.chat-message.user .chat-bubble {
+  background: #4caf50 !important;
+
+  color: white !important;
+
+  border: none !important;
+
+  border-bottom-right-radius: 4px !important;
+}
+
+
+/* Quick suggestion buttons */
+
+.chat-suggestions {
+  display: flex !important;
+
+  flex-wrap: wrap !important;
+
+  gap: 7px !important;
+
+  margin-top: 8px !important;
+}
+
+.chat-suggestions button {
+  width: auto !important;
+
+  padding: 7px 11px !important;
+
+  margin: 0 !important;
+
+  border: 1px solid #4caf50 !important;
+
+  border-radius: 16px !important;
+
+  background: white !important;
+
+  color: #2e7d32 !important;
+
+  font-size: 11px !important;
+
+  cursor: pointer !important;
+}
+
+.chat-suggestions button:hover {
+  background: #e8f5e9 !important;
+}
+
+
+/* Chat input */
+
+.vital-chat-input {
+  flex-shrink: 0 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  gap: 8px !important;
+
+  padding: 12px !important;
+
+  border-top: 1px solid #e3e6e4 !important;
+
+  background: white !important;
+}
+
+.vital-chat-input input {
+  flex: 1 !important;
+
+  width: auto !important;
+  height: 42px !important;
+
+  box-sizing: border-box !important;
+
+  padding: 0 15px !important;
+  margin: 0 !important;
+
+  border: 1px solid #d6d9d7 !important;
+
+  border-radius: 22px !important;
+
+  background: #f9faf9 !important;
+
+  color: #333 !important;
+
+  font-size: 14px !important;
+
+  outline: none !important;
+}
+
+.vital-chat-input input:focus {
+  border-color: #4caf50 !important;
+  background: white !important;
+}
+
+.vital-chat-input button {
+  flex-shrink: 0 !important;
+
+  width: 42px !important;
+  height: 42px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  font-size: 17px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+}
+
+.vital-chat-input button:hover {
+  background: #43a047 !important;
+}
+
+
+/* Chat scrollbar */
+
+.vital-chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vital-chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.vital-chat-messages::-webkit-scrollbar-thumb {
+  background: #c8cfca;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 800px) {
 
@@ -745,7 +1335,29 @@ body {
   .meal-item {
     flex-wrap: wrap;
   }
+
+  .exercise-card {
+    padding: 25px 20px;
+  }
+
+  .exercise-card form {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exercise-item button {
+    width: 100%;
+  }
 }
+
 
 @media (max-width: 500px) {
 
@@ -774,53 +1386,452 @@ body {
   .progress-card {
     padding: 20px;
   }
+
+  .vital-chatbot {
+    right: 10px !important;
+    bottom: 85px !important;
+
+    width: calc(100vw - 20px) !important;
+    height: 70vh !important;
+
+    border-radius: 16px !important;
+  }
+
+  .vital-chat-button {
+    right: 15px !important;
+    bottom: 15px !important;
+  }
+  /* =========================
+   CHAT RECIPE LINKS
+========================= */
+
+.chat-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
 }
 
-/* =========================================
-   EXERCISE LOG
-========================================= */
+.chat-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
 
-.exercise-page {
+.chat-link:hover {
+  background: #43a047;
+  transform: translateY(-1px);
+}
+}@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f8f6;
+  color: #222;
+}
+
+
+/* =========================================================
+   LOGIN & REGISTER
+========================================================= */
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8f6;
+  padding: 20px;
+}
+
+.login-card {
+  width: 400px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.login-card h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.login-card > p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-card button:hover {
+  background: #43a047;
+}
+
+.register-text {
+  margin-top: 20px !important;
+  margin-bottom: 0 !important;
+  font-size: 14px;
+}
+
+.register-text a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.app {
+  min-height: 100vh;
+}
+
+.navbar {
+  height: 65px;
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+}
+
+.nav-links a:hover {
+  color: #4caf50;
+}
+
+.logout-btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #43a047;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard {
   min-height: calc(100vh - 65px);
-  padding: 40px 20px;
+  padding: 40px;
   background: #f4f8f6;
 }
 
-.exercise-card {
-  width: 800px;
+.dashboard h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 22px;
+}
+
+.card p {
+  color: #666;
+}
+
+
+/* =========================================================
+   MACRO BARS
+========================================================= */
+
+.macro-item {
+  margin-bottom: 20px;
+}
+
+.macro-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.macro-label {
+  font-weight: bold;
+}
+
+.macro-value {
+  color: #666;
+  font-size: 14px;
+}
+
+.macro-track {
+  width: 100%;
+  height: 10px;
+  background: #e8e8e8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.macro-fill {
+  height: 100%;
+  background: #4caf50;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   CALORIES & WEIGHT
+========================================================= */
+
+.calorie-number,
+.weight-number {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   AI DAILY RECOMMENDATIONS
+========================================================= */
+
+.ai-suggestions {
+  margin-top: 30px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.ai-suggestions h2 {
+  margin-bottom: 8px;
+}
+
+.ai-suggestions > p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.suggestion-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.suggestion-card {
+  padding: 18px;
+  background: #f5f7f9;
+  border-radius: 12px;
+  border: 1px solid #edf0f0;
+}
+
+.suggestion-card h3 {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.suggestion-card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.suggestion-card strong {
+  color: #222;
+}
+
+
+/* =========================================================
+   WATER TRACKER
+========================================================= */
+
+.water-section {
+  margin-top: 25px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.water-section h2 {
+  margin-bottom: 15px;
+}
+
+.water-count {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.water-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.water-btn {
+  padding: 9px 15px !important;
+  border: none !important;
+  border-radius: 7px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.water-btn:hover {
+  background: #43a047 !important;
+}
+
+.water-reset-btn {
+  padding: 9px 15px !important;
+  border: none !important;
+  border-radius: 7px !important;
+  background: #e8f5e9 !important;
+  color: #2e7d32 !important;
+  cursor: pointer !important;
+}
+
+.water-reset-btn:hover {
+  background: #c8e6c9 !important;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8f6;
+  padding: 40px 20px;
+}
+
+.profile-card {
+  width: 600px;
   max-width: 100%;
-  margin: 0 auto;
   background: white;
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-.exercise-card h1 {
+.profile-card h1 {
   margin-bottom: 10px;
-  font-size: 34px;
-  color: #172b4d;
 }
 
-.exercise-card > p {
+.profile-card > p {
   color: #666;
-  margin-bottom: 25px;
-}
-
-
-/* =========================================
-   EXERCISE FORM
-========================================= */
-
-.exercise-card form {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
-  gap: 12px;
   margin-bottom: 30px;
 }
 
-.exercise-card input,
-.exercise-card select {
+.profile-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-card input,
+.profile-card select {
   width: 100%;
   padding: 13px;
   border: 1px solid #ddd;
@@ -830,97 +1841,167 @@ body {
   color: #222;
 }
 
-.exercise-card input:focus,
-.exercise-card select:focus {
+.profile-card input:focus,
+.profile-card select:focus {
   outline: none;
   border-color: #4caf50;
 }
 
-.exercise-card form button {
-  padding: 13px 18px;
+.profile-card button {
+  padding: 13px;
   border: none;
   border-radius: 8px;
   background: #4caf50;
   color: white;
-  font-size: 15px;
+  font-size: 16px;
   cursor: pointer;
-  white-space: nowrap;
 }
 
-.exercise-card form button:hover {
+.profile-card button:hover {
   background: #43a047;
 }
 
 
-/* =========================================
-   TODAY'S EXERCISE
-========================================= */
+/* =========================================================
+   FOOD LOG
+========================================================= */
 
-.exercise-summary {
-  margin-top: 25px;
-  padding: 20px;
-  background: #f5f7f9;
-  border-radius: 12px;
+.foodlog-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f4f8f6;
 }
 
-.exercise-summary h2 {
-  margin-bottom: 18px;
-  font-size: 21px;
-}
-
-.exercise-summary-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-.exercise-summary-grid > div {
-  padding: 20px;
+.foodlog-card {
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
   background: white;
-  border-radius: 10px;
-  text-align: center;
-  border: 1px solid #eee;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-.exercise-summary-grid strong {
-  font-size: 28px;
-  color: #4caf50;
+.foodlog-card h1 {
+  margin-bottom: 10px;
 }
 
-.exercise-summary-grid span {
+.foodlog-card > p {
   color: #666;
+  margin-bottom: 25px;
 }
 
-.exercise-summary-grid p {
-  margin-top: 7px;
-  color: #666;
-  font-size: 14px;
+.foodlog-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.foodlog-card input,
+.foodlog-card select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.foodlog-card input:focus,
+.foodlog-card select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.foodlog-card form button {
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.foodlog-card form button:hover {
+  background: #43a047;
 }
 
 
-/* =========================================
-   TODAY'S ACTIVITIES
-========================================= */
+/* =========================================================
+   FOOD SUGGESTIONS
+========================================================= */
 
-.exercise-history {
+.suggestions {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.suggestion-item {
+  padding: 10px 13px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #f4f8f6;
+}
+
+
+/* =========================================================
+   NUTRITION SUMMARY
+========================================================= */
+
+.nutrition-summary {
   margin-top: 30px;
 }
 
-.exercise-history h2 {
+.nutrition-summary h2 {
   margin-bottom: 15px;
 }
 
-.exercise-history > p {
-  padding: 15px;
-  background: #f5f7f9;
-  border-radius: 10px;
-  color: #666;
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
 }
 
-.exercise-item {
+.nutrition-grid > div {
+  padding: 18px;
+  background: #f5f7f9;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.nutrition-grid strong {
+  font-size: 22px;
+}
+
+.nutrition-grid p {
+  margin-top: 5px;
+  color: #666;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   MEALS
+========================================================= */
+
+.meal-section {
+  margin-top: 30px;
+}
+
+.meal-section h2 {
+  margin-bottom: 15px;
+}
+
+.meal-item {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   gap: 15px;
   padding: 15px;
   margin-bottom: 10px;
@@ -928,13 +2009,349 @@ body {
   border-radius: 10px;
 }
 
+.meal-item span {
+  color: #666;
+}
+
+.meal-item button {
+  padding: 7px 12px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.meal-item button:hover {
+  background: #43a047 !important;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #f4f8f6;
+  padding: 40px 20px;
+}
+
+.progress-card {
+  width: 700px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.progress-card h1 {
+  margin-bottom: 10px;
+}
+
+.progress-card > p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   WEIGHT FORM
+========================================================= */
+
+.progress-card form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.progress-card form input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.progress-card form input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.progress-card form button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.progress-card form button:hover {
+  background: #43a047;
+}
+
+
+/* =========================================================
+   PROGRESS CHART
+========================================================= */
+
+.progress-chart {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   WEIGHT HISTORY
+========================================================= */
+
+.weight-history {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f8f9fa;
+}
+
+.weight-history h2 {
+  margin-bottom: 15px;
+}
+
+.weight-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.weight-entry:last-child {
+  margin-bottom: 0;
+}
+
+.weight-entry strong {
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   PLATEAU ALERT
+========================================================= */
+
+.plateau-alert {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #fff8e1;
+  border-radius: 12px;
+  border-left: 5px solid #ffb300;
+}
+
+.plateau-alert h2 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.plateau-alert p {
+  color: #666;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   PROGRESS STATS
+========================================================= */
+
+.progress-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.progress-stats div {
+  padding: 20px;
+  background: #f5f7f9;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.progress-stats h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.progress-stats p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   EXERCISE LOG
+========================================================= */
+
+.exercise-page {
+  min-height: calc(100vh - 65px);
+  padding: 40px 20px;
+  background: #f4f8f6;
+}
+
+.exercise-card {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 35px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.exercise-card h1 {
+  margin: 0 0 8px;
+  font-size: 34px;
+  color: #172b4d;
+}
+
+.exercise-card > p {
+  margin: 0 0 30px;
+  color: #667085;
+  font-size: 16px;
+}
+
+
+/* Exercise form */
+
+.exercise-card form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.exercise-card select,
+.exercise-card input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+.exercise-card select:focus,
+.exercise-card input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+}
+
+.exercise-card form button {
+  padding: 13px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.exercise-card form button:hover {
+  background: #43a047;
+}
+
+
+/* Today's exercise */
+
+.exercise-summary {
+  padding: 25px;
+  background: #f7fbf8;
+  border: 1px solid #e2eee5;
+  border-radius: 16px;
+}
+
+.exercise-summary h2 {
+  margin-bottom: 20px;
+  color: #172b4d;
+}
+
+.exercise-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.exercise-summary-grid > div {
+  padding: 22px;
+  background: white;
+  border: 1px solid #e8eee9;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.exercise-summary-grid strong {
+  font-size: 30px;
+  color: #4caf50;
+}
+
+.exercise-summary-grid span {
+  font-size: 16px;
+  color: #667085;
+}
+
+.exercise-summary-grid p {
+  margin: 8px 0 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+
+/* Today's activities */
+
+.exercise-history {
+  margin-top: 30px;
+}
+
+.exercise-history h2 {
+  margin-bottom: 18px;
+  color: #172b4d;
+}
+
+.exercise-history > p {
+  padding: 18px;
+  background: #f8faf9;
+  border-radius: 12px;
+  color: #667085;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  background: #f8faf9;
+  border: 1px solid #e5ebe7;
+  border-radius: 14px;
+}
+
 .exercise-item strong {
+  color: #172b4d;
   font-size: 16px;
 }
 
 .exercise-item p {
-  margin-top: 5px;
-  color: #666;
+  margin: 5px 0 0;
+  color: #667085;
   font-size: 14px;
 }
 
@@ -944,31 +2361,414 @@ body {
 }
 
 .exercise-item button {
-  padding: 7px 12px;
-  border: none;
-  border-radius: 6px;
-  background: #e53935;
-  color: white;
-  cursor: pointer;
+  padding: 8px 14px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  font-weight: 600;
+  cursor: pointer !important;
 }
 
 .exercise-item button:hover {
-  background: #c62828;
+  background: #43a047 !important;
 }
 
 
-/* =========================================
-   EXERCISE MOBILE
-========================================= */
+/* =========================================================
+   VITAL CHATBOT
+========================================================= */
+
+/* Floating chat button */
+
+.vital-chat-button {
+  position: fixed !important;
+  right: 25px !important;
+  bottom: 25px !important;
+
+  width: 60px !important;
+  height: 60px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  font-size: 26px !important;
+  line-height: 1 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22) !important;
+
+  z-index: 99999 !important;
+}
+
+.vital-chat-button:hover {
+  background: #43a047 !important;
+  transform: scale(1.05);
+}
+
+
+/* Chat window */
+
+.vital-chatbot {
+  position: fixed !important;
+
+  right: 25px !important;
+  bottom: 100px !important;
+
+  width: 380px !important;
+  height: 560px !important;
+
+  background: white !important;
+
+  border: 1px solid #e2e6e3 !important;
+  border-radius: 18px !important;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22) !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  overflow: hidden !important;
+
+  z-index: 99998 !important;
+}
+
+
+/* Chat header */
+
+.vital-chat-header {
+  flex-shrink: 0 !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  padding: 17px 18px !important;
+
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.vital-chat-header strong {
+  display: block !important;
+
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.vital-chat-header span {
+  display: block !important;
+
+  margin-top: 3px !important;
+
+  font-size: 12px !important;
+
+  opacity: 0.9 !important;
+}
+
+
+/* Close button */
+
+.vital-chat-close {
+  width: 34px !important;
+  height: 34px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: transparent !important;
+  color: white !important;
+
+  font-size: 25px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+}
+
+.vital-chat-close:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+
+/* Messages */
+
+.vital-chat-messages {
+  flex: 1 !important;
+
+  min-height: 0 !important;
+
+  padding: 18px !important;
+
+  overflow-y: auto !important;
+
+  background: #f6f8f7 !important;
+}
+
+.chat-message {
+  margin-bottom: 16px !important;
+}
+
+.chat-message.user {
+  text-align: right !important;
+}
+
+.chat-message.bot {
+  text-align: left !important;
+}
+
+
+/* Chat bubble */
+
+.chat-bubble {
+  display: inline-block !important;
+
+  max-width: 82% !important;
+
+  padding: 11px 14px !important;
+
+  border-radius: 14px !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.5 !important;
+
+  text-align: left !important;
+
+  word-wrap: break-word !important;
+}
+
+
+/* Bot bubble */
+
+.chat-message.bot .chat-bubble {
+  background: white !important;
+
+  color: #333 !important;
+
+  border: 1px solid #e2e6e3 !important;
+
+  border-bottom-left-radius: 4px !important;
+}
+
+
+/* User bubble */
+
+.chat-message.user .chat-bubble {
+  background: #4caf50 !important;
+
+  color: white !important;
+
+  border: none !important;
+
+  border-bottom-right-radius: 4px !important;
+}
+
+
+/* Quick suggestion buttons */
+
+.chat-suggestions {
+  display: flex !important;
+
+  flex-wrap: wrap !important;
+
+  gap: 7px !important;
+
+  margin-top: 8px !important;
+}
+
+.chat-suggestions button {
+  width: auto !important;
+
+  padding: 7px 11px !important;
+
+  margin: 0 !important;
+
+  border: 1px solid #4caf50 !important;
+
+  border-radius: 16px !important;
+
+  background: white !important;
+
+  color: #2e7d32 !important;
+
+  font-size: 11px !important;
+
+  cursor: pointer !important;
+}
+
+.chat-suggestions button:hover {
+  background: #e8f5e9 !important;
+}
+
+
+/* Chat input */
+
+.vital-chat-input {
+  flex-shrink: 0 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  gap: 8px !important;
+
+  padding: 12px !important;
+
+  border-top: 1px solid #e3e6e4 !important;
+
+  background: white !important;
+}
+
+.vital-chat-input input {
+  flex: 1 !important;
+
+  width: auto !important;
+  height: 42px !important;
+
+  box-sizing: border-box !important;
+
+  padding: 0 15px !important;
+  margin: 0 !important;
+
+  border: 1px solid #d6d9d7 !important;
+
+  border-radius: 22px !important;
+
+  background: #f9faf9 !important;
+
+  color: #333 !important;
+
+  font-size: 14px !important;
+
+  outline: none !important;
+}
+
+.vital-chat-input input:focus {
+  border-color: #4caf50 !important;
+  background: white !important;
+}
+
+.vital-chat-input button {
+  flex-shrink: 0 !important;
+
+  width: 42px !important;
+  height: 42px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  font-size: 17px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+}
+
+.vital-chat-input button:hover {
+  background: #43a047 !important;
+}
+
+
+/* Chat scrollbar */
+
+.vital-chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vital-chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.vital-chat-messages::-webkit-scrollbar-thumb {
+  background: #c8cfca;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 800px) {
 
-  .exercise-page {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .suggestion-list {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrition-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .dashboard {
+    padding: 25px;
+  }
+
+  .profile-page,
+  .progress-page {
     padding: 25px 15px;
   }
 
-  .exercise-card {
+  .profile-card,
+  .progress-card,
+  .foodlog-card {
     padding: 25px;
+  }
+
+  .progress-card form {
+    flex-direction: column;
+  }
+
+  .progress-card form button {
+    width: 100%;
+  }
+
+  .progress-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .meal-item {
+    flex-wrap: wrap;
+  }
+
+  .exercise-card {
+    padding: 25px 20px;
   }
 
   .exercise-card form {
@@ -980,10 +2780,2960 @@ body {
   }
 
   .exercise-item {
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .exercise-item button {
     width: 100%;
   }
+}
+
+
+@media (max-width: 500px) {
+
+  .nutrition-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding: 0 15px;
+  }
+
+  .logout-btn {
+    padding: 8px 12px;
+  }
+
+  .dashboard {
+    padding: 20px 15px;
+  }
+
+  .dashboard h1 {
+    font-size: 26px;
+  }
+
+  .foodlog-card,
+  .profile-card,
+  .progress-card {
+    padding: 20px;
+  }
+
+  .vital-chatbot {
+    right: 10px !important;
+    bottom: 85px !important;
+
+    width: calc(100vw - 20px) !important;
+    height: 70vh !important;
+
+    border-radius: 16px !important;
+  }
+
+  .vital-chat-button {
+    right: 15px !important;
+    bottom: 15px !important;
+  }
+  /* =========================
+   CHAT RECIPE LINKS
+========================= */
+
+/* Chatbot recipe links */
+
+.chat-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: #f1f8f3;
+  border: 1px solid #4caf50;
+  color: #2e7d32;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  transition: 0.2s ease;
+}
+
+.chat-link:hover {
+  background: #e8f5e9;
+  transform: translateY(-1px);
+}
+}@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f8f6;
+  color: #222;
+}
+
+
+/* =========================================================
+   LOGIN & REGISTER
+========================================================= */
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8f6;
+  padding: 20px;
+}
+
+.login-card {
+  width: 400px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.login-card h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.login-card > p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-card button:hover {
+  background: #43a047;
+}
+
+.register-text {
+  margin-top: 20px !important;
+  margin-bottom: 0 !important;
+  font-size: 14px;
+}
+
+.register-text a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.app {
+  min-height: 100vh;
+}
+
+.navbar {
+  height: 65px;
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+}
+
+.nav-links a:hover {
+  color: #4caf50;
+}
+
+.logout-btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #43a047;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard {
+  min-height: calc(100vh - 65px);
+  padding: 40px;
+  background: #f4f8f6;
+}
+
+.dashboard h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 22px;
+}
+
+.card p {
+  color: #666;
+}
+
+
+/* =========================================================
+   MACRO BARS
+========================================================= */
+
+.macro-item {
+  margin-bottom: 20px;
+}
+
+.macro-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.macro-label {
+  font-weight: bold;
+}
+
+.macro-value {
+  color: #666;
+  font-size: 14px;
+}
+
+.macro-track {
+  width: 100%;
+  height: 10px;
+  background: #e8e8e8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.macro-fill {
+  height: 100%;
+  background: #4caf50;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   CALORIES & WEIGHT
+========================================================= */
+
+.calorie-number,
+.weight-number {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   AI DAILY RECOMMENDATIONS
+========================================================= */
+
+.ai-suggestions {
+  margin-top: 30px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.ai-suggestions h2 {
+  margin-bottom: 8px;
+}
+
+.ai-suggestions > p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.suggestion-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.suggestion-card {
+  padding: 18px;
+  background: #f5f7f9;
+  border-radius: 12px;
+  border: 1px solid #edf0f0;
+}
+
+.suggestion-card h3 {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.suggestion-card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.suggestion-card strong {
+  color: #222;
+}
+
+
+/* =========================================================
+   WATER TRACKER
+========================================================= */
+
+.water-section {
+  margin-top: 25px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.water-section h2 {
+  margin-bottom: 15px;
+}
+
+.water-count {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.water-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.water-btn {
+  padding: 9px 15px !important;
+  border: none !important;
+  border-radius: 7px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.water-btn:hover {
+  background: #43a047 !important;
+}
+
+.water-reset-btn {
+  padding: 9px 15px !important;
+  border: none !important;
+  border-radius: 7px !important;
+  background: #e8f5e9 !important;
+  color: #2e7d32 !important;
+  cursor: pointer !important;
+}
+
+.water-reset-btn:hover {
+  background: #c8e6c9 !important;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8f6;
+  padding: 40px 20px;
+}
+
+.profile-card {
+  width: 600px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card h1 {
+  margin-bottom: 10px;
+}
+
+.profile-card > p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.profile-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-card input,
+.profile-card select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.profile-card input:focus,
+.profile-card select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.profile-card button {
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-card button:hover {
+  background: #43a047;
+}
+
+
+/* =========================================================
+   FOOD LOG
+========================================================= */
+
+.foodlog-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f4f8f6;
+}
+
+.foodlog-card {
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.foodlog-card h1 {
+  margin-bottom: 10px;
+}
+
+.foodlog-card > p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.foodlog-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.foodlog-card input,
+.foodlog-card select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.foodlog-card input:focus,
+.foodlog-card select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.foodlog-card form button {
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.foodlog-card form button:hover {
+  background: #43a047;
+}
+
+
+/* =========================================================
+   FOOD SUGGESTIONS
+========================================================= */
+
+.suggestions {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.suggestion-item {
+  padding: 10px 13px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #f4f8f6;
+}
+
+
+/* =========================================================
+   NUTRITION SUMMARY
+========================================================= */
+
+.nutrition-summary {
+  margin-top: 30px;
+}
+
+.nutrition-summary h2 {
+  margin-bottom: 15px;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.nutrition-grid > div {
+  padding: 18px;
+  background: #f5f7f9;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.nutrition-grid strong {
+  font-size: 22px;
+}
+
+.nutrition-grid p {
+  margin-top: 5px;
+  color: #666;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   MEALS
+========================================================= */
+
+.meal-section {
+  margin-top: 30px;
+}
+
+.meal-section h2 {
+  margin-bottom: 15px;
+}
+
+.meal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #f5f7f9;
+  border-radius: 10px;
+}
+
+.meal-item span {
+  color: #666;
+}
+
+.meal-item button {
+  padding: 7px 12px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.meal-item button:hover {
+  background: #43a047 !important;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #f4f8f6;
+  padding: 40px 20px;
+}
+
+.progress-card {
+  width: 700px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.progress-card h1 {
+  margin-bottom: 10px;
+}
+
+.progress-card > p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   WEIGHT FORM
+========================================================= */
+
+.progress-card form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.progress-card form input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.progress-card form input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.progress-card form button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.progress-card form button:hover {
+  background: #43a047;
+}
+
+
+/* =========================================================
+   PROGRESS CHART
+========================================================= */
+
+.progress-chart {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   WEIGHT HISTORY
+========================================================= */
+
+.weight-history {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f8f9fa;
+}
+
+.weight-history h2 {
+  margin-bottom: 15px;
+}
+
+.weight-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.weight-entry:last-child {
+  margin-bottom: 0;
+}
+
+.weight-entry strong {
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   PLATEAU ALERT
+========================================================= */
+
+.plateau-alert {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #fff8e1;
+  border-radius: 12px;
+  border-left: 5px solid #ffb300;
+}
+
+.plateau-alert h2 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.plateau-alert p {
+  color: #666;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   PROGRESS STATS
+========================================================= */
+
+.progress-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.progress-stats div {
+  padding: 20px;
+  background: #f5f7f9;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.progress-stats h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.progress-stats p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   EXERCISE LOG
+========================================================= */
+
+.exercise-page {
+  min-height: calc(100vh - 65px);
+  padding: 40px 20px;
+  background: #f4f8f6;
+}
+
+.exercise-card {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 35px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.exercise-card h1 {
+  margin: 0 0 8px;
+  font-size: 34px;
+  color: #172b4d;
+}
+
+.exercise-card > p {
+  margin: 0 0 30px;
+  color: #667085;
+  font-size: 16px;
+}
+
+
+/* Exercise form */
+
+.exercise-card form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.exercise-card select,
+.exercise-card input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+.exercise-card select:focus,
+.exercise-card input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+}
+
+.exercise-card form button {
+  padding: 13px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.exercise-card form button:hover {
+  background: #43a047;
+}
+
+
+/* Today's exercise */
+
+.exercise-summary {
+  padding: 25px;
+  background: #f7fbf8;
+  border: 1px solid #e2eee5;
+  border-radius: 16px;
+}
+
+.exercise-summary h2 {
+  margin-bottom: 20px;
+  color: #172b4d;
+}
+
+.exercise-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.exercise-summary-grid > div {
+  padding: 22px;
+  background: white;
+  border: 1px solid #e8eee9;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.exercise-summary-grid strong {
+  font-size: 30px;
+  color: #4caf50;
+}
+
+.exercise-summary-grid span {
+  font-size: 16px;
+  color: #667085;
+}
+
+.exercise-summary-grid p {
+  margin: 8px 0 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+
+/* Today's activities */
+
+.exercise-history {
+  margin-top: 30px;
+}
+
+.exercise-history h2 {
+  margin-bottom: 18px;
+  color: #172b4d;
+}
+
+.exercise-history > p {
+  padding: 18px;
+  background: #f8faf9;
+  border-radius: 12px;
+  color: #667085;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  background: #f8faf9;
+  border: 1px solid #e5ebe7;
+  border-radius: 14px;
+}
+
+.exercise-item strong {
+  color: #172b4d;
+  font-size: 16px;
+}
+
+.exercise-item p {
+  margin: 5px 0 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+.exercise-item > span {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.exercise-item button {
+  padding: 8px 14px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  font-weight: 600;
+  cursor: pointer !important;
+}
+
+.exercise-item button:hover {
+  background: #43a047 !important;
+}
+
+
+/* =========================================================
+   VITAL CHATBOT
+========================================================= */
+
+/* Floating chat button */
+
+.vital-chat-button {
+  position: fixed !important;
+  right: 25px !important;
+  bottom: 25px !important;
+
+  width: 60px !important;
+  height: 60px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  font-size: 26px !important;
+  line-height: 1 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22) !important;
+
+  z-index: 99999 !important;
+}
+
+.vital-chat-button:hover {
+  background: #43a047 !important;
+  transform: scale(1.05);
+}
+
+
+/* Chat window */
+
+.vital-chatbot {
+  position: fixed !important;
+
+  right: 25px !important;
+  bottom: 100px !important;
+
+  width: 380px !important;
+  height: 560px !important;
+
+  background: white !important;
+
+  border: 1px solid #e2e6e3 !important;
+  border-radius: 18px !important;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22) !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  overflow: hidden !important;
+
+  z-index: 99998 !important;
+}
+
+
+/* Chat header */
+
+.vital-chat-header {
+  flex-shrink: 0 !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  padding: 17px 18px !important;
+
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.vital-chat-header strong {
+  display: block !important;
+
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.vital-chat-header span {
+  display: block !important;
+
+  margin-top: 3px !important;
+
+  font-size: 12px !important;
+
+  opacity: 0.9 !important;
+}
+
+
+/* Close button */
+
+.vital-chat-close {
+  width: 34px !important;
+  height: 34px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: transparent !important;
+  color: white !important;
+
+  font-size: 25px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+}
+
+.vital-chat-close:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+
+/* Messages */
+
+.vital-chat-messages {
+  flex: 1 !important;
+
+  min-height: 0 !important;
+
+  padding: 18px !important;
+
+  overflow-y: auto !important;
+
+  background: #f6f8f7 !important;
+}
+
+.chat-message {
+  margin-bottom: 16px !important;
+}
+
+.chat-message.user {
+  text-align: right !important;
+}
+
+.chat-message.bot {
+  text-align: left !important;
+}
+
+
+/* Chat bubble */
+
+.chat-bubble {
+  display: inline-block !important;
+
+  max-width: 82% !important;
+
+  padding: 11px 14px !important;
+
+  border-radius: 14px !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.5 !important;
+
+  text-align: left !important;
+
+  word-wrap: break-word !important;
+}
+
+
+/* Bot bubble */
+
+.chat-message.bot .chat-bubble {
+  background: white !important;
+
+  color: #333 !important;
+
+  border: 1px solid #e2e6e3 !important;
+
+  border-bottom-left-radius: 4px !important;
+}
+
+
+/* User bubble */
+
+.chat-message.user .chat-bubble {
+  background: #4caf50 !important;
+
+  color: white !important;
+
+  border: none !important;
+
+  border-bottom-right-radius: 4px !important;
+}
+
+
+/* Quick suggestion buttons */
+
+.chat-suggestions {
+  display: flex !important;
+
+  flex-wrap: wrap !important;
+
+  gap: 7px !important;
+
+  margin-top: 8px !important;
+}
+
+.chat-suggestions button {
+  width: auto !important;
+
+  padding: 7px 11px !important;
+
+  margin: 0 !important;
+
+  border: 1px solid #4caf50 !important;
+
+  border-radius: 16px !important;
+
+  background: white !important;
+
+  color: #2e7d32 !important;
+
+  font-size: 11px !important;
+
+  cursor: pointer !important;
+}
+
+.chat-suggestions button:hover {
+  background: #e8f5e9 !important;
+}
+
+
+/* Chat input */
+
+.vital-chat-input {
+  flex-shrink: 0 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  gap: 8px !important;
+
+  padding: 12px !important;
+
+  border-top: 1px solid #e3e6e4 !important;
+
+  background: white !important;
+}
+
+.vital-chat-input input {
+  flex: 1 !important;
+
+  width: auto !important;
+  height: 42px !important;
+
+  box-sizing: border-box !important;
+
+  padding: 0 15px !important;
+  margin: 0 !important;
+
+  border: 1px solid #d6d9d7 !important;
+
+  border-radius: 22px !important;
+
+  background: #f9faf9 !important;
+
+  color: #333 !important;
+
+  font-size: 14px !important;
+
+  outline: none !important;
+}
+
+.vital-chat-input input:focus {
+  border-color: #4caf50 !important;
+  background: white !important;
+}
+
+.vital-chat-input button {
+  flex-shrink: 0 !important;
+
+  width: 42px !important;
+  height: 42px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  font-size: 17px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+}
+
+.vital-chat-input button:hover {
+  background: #43a047 !important;
+}
+
+
+/* Chat scrollbar */
+
+.vital-chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vital-chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.vital-chat-messages::-webkit-scrollbar-thumb {
+  background: #c8cfca;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .suggestion-list {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrition-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .dashboard {
+    padding: 25px;
+  }
+
+  .profile-page,
+  .progress-page {
+    padding: 25px 15px;
+  }
+
+  .profile-card,
+  .progress-card,
+  .foodlog-card {
+    padding: 25px;
+  }
+
+  .progress-card form {
+    flex-direction: column;
+  }
+
+  .progress-card form button {
+    width: 100%;
+  }
+
+  .progress-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .meal-item {
+    flex-wrap: wrap;
+  }
+
+  .exercise-card {
+    padding: 25px 20px;
+  }
+
+  .exercise-card form {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exercise-item button {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .nutrition-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding: 0 15px;
+  }
+
+  .logout-btn {
+    padding: 8px 12px;
+  }
+
+  .dashboard {
+    padding: 20px 15px;
+  }
+
+  .dashboard h1 {
+    font-size: 26px;
+  }
+
+  .foodlog-card,
+  .profile-card,
+  .progress-card {
+    padding: 20px;
+  }
+
+  .vital-chatbot {
+    right: 10px !important;
+    bottom: 85px !important;
+
+    width: calc(100vw - 20px) !important;
+    height: 70vh !important;
+
+    border-radius: 16px !important;
+  }
+
+  .vital-chat-button {
+    right: 15px !important;
+    bottom: 15px !important;
+  }
+  /* =========================
+   CHAT RECIPE LINKS
+========================= */
+
+.chat-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.chat-link:hover {
+  background: #43a047;
+  transform: translateY(-1px);
+}
+}@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap');
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f8f6;
+  color: #222;
+}
+
+
+/* =========================================================
+   LOGIN & REGISTER
+========================================================= */
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8f6;
+  padding: 20px;
+}
+
+.login-card {
+  width: 400px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.login-card h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.login-card > p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.login-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login-card input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.login-card input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-card button:hover {
+  background: #43a047;
+}
+
+.register-text {
+  margin-top: 20px !important;
+  margin-bottom: 0 !important;
+  font-size: 14px;
+}
+
+.register-text a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.app {
+  min-height: 100vh;
+}
+
+.navbar {
+  height: 65px;
+  width: 100%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 100;
+}
+
+.logo {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 15px;
+}
+
+.nav-links a:hover {
+  color: #4caf50;
+}
+
+.logout-btn {
+  padding: 9px 18px;
+  border: none;
+  border-radius: 6px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #43a047;
+}
+
+
+/* =========================================================
+   DASHBOARD
+========================================================= */
+
+.dashboard {
+  min-height: calc(100vh - 65px);
+  padding: 40px;
+  background: #f4f8f6;
+}
+
+.dashboard h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.card h2 {
+  font-size: 20px;
+  margin-bottom: 22px;
+}
+
+.card p {
+  color: #666;
+}
+
+
+/* =========================================================
+   MACRO BARS
+========================================================= */
+
+.macro-item {
+  margin-bottom: 20px;
+}
+
+.macro-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.macro-label {
+  font-weight: bold;
+}
+
+.macro-value {
+  color: #666;
+  font-size: 14px;
+}
+
+.macro-track {
+  width: 100%;
+  height: 10px;
+  background: #e8e8e8;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.macro-fill {
+  height: 100%;
+  background: #4caf50;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   CALORIES & WEIGHT
+========================================================= */
+
+.calorie-number,
+.weight-number {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   AI DAILY RECOMMENDATIONS
+========================================================= */
+
+.ai-suggestions {
+  margin-top: 30px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.ai-suggestions h2 {
+  margin-bottom: 8px;
+}
+
+.ai-suggestions > p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.suggestion-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.suggestion-card {
+  padding: 18px;
+  background: #f5f7f9;
+  border-radius: 12px;
+  border: 1px solid #edf0f0;
+}
+
+.suggestion-card h3 {
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.suggestion-card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.suggestion-card strong {
+  color: #222;
+}
+
+
+/* =========================================================
+   WATER TRACKER
+========================================================= */
+
+.water-section {
+  margin-top: 25px;
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+}
+
+.water-section h2 {
+  margin-bottom: 15px;
+}
+
+.water-count {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.water-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.water-btn {
+  padding: 9px 15px !important;
+  border: none !important;
+  border-radius: 7px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.water-btn:hover {
+  background: #43a047 !important;
+}
+
+.water-reset-btn {
+  padding: 9px 15px !important;
+  border: none !important;
+  border-radius: 7px !important;
+  background: #e8f5e9 !important;
+  color: #2e7d32 !important;
+  cursor: pointer !important;
+}
+
+.water-reset-btn:hover {
+  background: #c8e6c9 !important;
+}
+
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f4f8f6;
+  padding: 40px 20px;
+}
+
+.profile-card {
+  width: 600px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.profile-card h1 {
+  margin-bottom: 10px;
+}
+
+.profile-card > p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.profile-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.profile-card input,
+.profile-card select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.profile-card input:focus,
+.profile-card select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.profile-card button {
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.profile-card button:hover {
+  background: #43a047;
+}
+
+
+/* =========================================================
+   FOOD LOG
+========================================================= */
+
+.foodlog-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f4f8f6;
+}
+
+.foodlog-card {
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.foodlog-card h1 {
+  margin-bottom: 10px;
+}
+
+.foodlog-card > p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.foodlog-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.foodlog-card input,
+.foodlog-card select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  color: #222;
+}
+
+.foodlog-card input:focus,
+.foodlog-card select:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.foodlog-card form button {
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.foodlog-card form button:hover {
+  background: #43a047;
+}
+
+
+/* =========================================================
+   FOOD SUGGESTIONS
+========================================================= */
+
+.suggestions {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+
+.suggestion-item {
+  padding: 10px 13px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: #f4f8f6;
+}
+
+
+/* =========================================================
+   NUTRITION SUMMARY
+========================================================= */
+
+.nutrition-summary {
+  margin-top: 30px;
+}
+
+.nutrition-summary h2 {
+  margin-bottom: 15px;
+}
+
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.nutrition-grid > div {
+  padding: 18px;
+  background: #f5f7f9;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.nutrition-grid strong {
+  font-size: 22px;
+}
+
+.nutrition-grid p {
+  margin-top: 5px;
+  color: #666;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   MEALS
+========================================================= */
+
+.meal-section {
+  margin-top: 30px;
+}
+
+.meal-section h2 {
+  margin-bottom: 15px;
+}
+
+.meal-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background: #f5f7f9;
+  border-radius: 10px;
+}
+
+.meal-item span {
+  color: #666;
+}
+
+.meal-item button {
+  padding: 7px 12px !important;
+  border: none !important;
+  border-radius: 6px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  cursor: pointer !important;
+}
+
+.meal-item button:hover {
+  background: #43a047 !important;
+}
+
+
+/* =========================================================
+   PROGRESS
+========================================================= */
+
+.progress-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #f4f8f6;
+  padding: 40px 20px;
+}
+
+.progress-card {
+  width: 700px;
+  max-width: 100%;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.progress-card h1 {
+  margin-bottom: 10px;
+}
+
+.progress-card > p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   WEIGHT FORM
+========================================================= */
+
+.progress-card form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+.progress-card form input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.progress-card form input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.progress-card form button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.progress-card form button:hover {
+  background: #43a047;
+}
+
+
+/* =========================================================
+   PROGRESS CHART
+========================================================= */
+
+.progress-chart {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   WEIGHT HISTORY
+========================================================= */
+
+.weight-history {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f8f9fa;
+}
+
+.weight-history h2 {
+  margin-bottom: 15px;
+}
+
+.weight-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  margin-bottom: 8px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #eee;
+}
+
+.weight-entry:last-child {
+  margin-bottom: 0;
+}
+
+.weight-entry strong {
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   PLATEAU ALERT
+========================================================= */
+
+.plateau-alert {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background: #fff8e1;
+  border-radius: 12px;
+  border-left: 5px solid #ffb300;
+}
+
+.plateau-alert h2 {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.plateau-alert p {
+  color: #666;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   PROGRESS STATS
+========================================================= */
+
+.progress-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.progress-stats div {
+  padding: 20px;
+  background: #f5f7f9;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.progress-stats h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.progress-stats p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/* =========================================================
+   EXERCISE LOG
+========================================================= */
+
+.exercise-page {
+  min-height: calc(100vh - 65px);
+  padding: 40px 20px;
+  background: #f4f8f6;
+}
+
+.exercise-card {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 35px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.exercise-card h1 {
+  margin: 0 0 8px;
+  font-size: 34px;
+  color: #172b4d;
+}
+
+.exercise-card > p {
+  margin: 0 0 30px;
+  color: #667085;
+  font-size: 16px;
+}
+
+
+/* Exercise form */
+
+.exercise-card form {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr auto;
+  gap: 12px;
+  margin-bottom: 35px;
+}
+
+.exercise-card select,
+.exercise-card input {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  background: white;
+}
+
+.exercise-card select:focus,
+.exercise-card input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.12);
+}
+
+.exercise-card form button {
+  padding: 13px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.exercise-card form button:hover {
+  background: #43a047;
+}
+
+
+/* Today's exercise */
+
+.exercise-summary {
+  padding: 25px;
+  background: #f7fbf8;
+  border: 1px solid #e2eee5;
+  border-radius: 16px;
+}
+
+.exercise-summary h2 {
+  margin-bottom: 20px;
+  color: #172b4d;
+}
+
+.exercise-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.exercise-summary-grid > div {
+  padding: 22px;
+  background: white;
+  border: 1px solid #e8eee9;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.exercise-summary-grid strong {
+  font-size: 30px;
+  color: #4caf50;
+}
+
+.exercise-summary-grid span {
+  font-size: 16px;
+  color: #667085;
+}
+
+.exercise-summary-grid p {
+  margin: 8px 0 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+
+/* Today's activities */
+
+.exercise-history {
+  margin-top: 30px;
+}
+
+.exercise-history h2 {
+  margin-bottom: 18px;
+  color: #172b4d;
+}
+
+.exercise-history > p {
+  padding: 18px;
+  background: #f8faf9;
+  border-radius: 12px;
+  color: #667085;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  background: #f8faf9;
+  border: 1px solid #e5ebe7;
+  border-radius: 14px;
+}
+
+.exercise-item strong {
+  color: #172b4d;
+  font-size: 16px;
+}
+
+.exercise-item p {
+  margin: 5px 0 0;
+  color: #667085;
+  font-size: 14px;
+}
+
+.exercise-item > span {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.exercise-item button {
+  padding: 8px 14px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  background: #4caf50 !important;
+  color: white !important;
+  font-weight: 600;
+  cursor: pointer !important;
+}
+
+.exercise-item button:hover {
+  background: #43a047 !important;
+}
+
+
+/* =========================================================
+   VITAL CHATBOT
+========================================================= */
+
+/* Floating chat button */
+
+.vital-chat-button {
+  position: fixed !important;
+  right: 25px !important;
+  bottom: 25px !important;
+
+  width: 60px !important;
+  height: 60px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  font-size: 26px !important;
+  line-height: 1 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22) !important;
+
+  z-index: 99999 !important;
+}
+
+.vital-chat-button:hover {
+  background: #43a047 !important;
+  transform: scale(1.05);
+}
+
+
+/* Chat window */
+
+.vital-chatbot {
+  position: fixed !important;
+
+  right: 25px !important;
+  bottom: 100px !important;
+
+  width: 380px !important;
+  height: 560px !important;
+
+  background: white !important;
+
+  border: 1px solid #e2e6e3 !important;
+  border-radius: 18px !important;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22) !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+
+  overflow: hidden !important;
+
+  z-index: 99998 !important;
+}
+
+
+/* Chat header */
+
+.vital-chat-header {
+  flex-shrink: 0 !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  padding: 17px 18px !important;
+
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.vital-chat-header strong {
+  display: block !important;
+
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.vital-chat-header span {
+  display: block !important;
+
+  margin-top: 3px !important;
+
+  font-size: 12px !important;
+
+  opacity: 0.9 !important;
+}
+
+
+/* Close button */
+
+.vital-chat-close {
+  width: 34px !important;
+  height: 34px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: transparent !important;
+  color: white !important;
+
+  font-size: 25px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+}
+
+.vital-chat-close:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+
+/* Messages */
+
+.vital-chat-messages {
+  flex: 1 !important;
+
+  min-height: 0 !important;
+
+  padding: 18px !important;
+
+  overflow-y: auto !important;
+
+  background: #f6f8f7 !important;
+}
+
+.chat-message {
+  margin-bottom: 16px !important;
+}
+
+.chat-message.user {
+  text-align: right !important;
+}
+
+.chat-message.bot {
+  text-align: left !important;
+}
+
+
+/* Chat bubble */
+
+.chat-bubble {
+  display: inline-block !important;
+
+  max-width: 82% !important;
+
+  padding: 11px 14px !important;
+
+  border-radius: 14px !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.5 !important;
+
+  text-align: left !important;
+
+  word-wrap: break-word !important;
+}
+
+
+/* Bot bubble */
+
+.chat-message.bot .chat-bubble {
+  background: white !important;
+
+  color: #333 !important;
+
+  border: 1px solid #e2e6e3 !important;
+
+  border-bottom-left-radius: 4px !important;
+}
+
+
+/* User bubble */
+
+.chat-message.user .chat-bubble {
+  background: #4caf50 !important;
+
+  color: white !important;
+
+  border: none !important;
+
+  border-bottom-right-radius: 4px !important;
+}
+
+
+/* Quick suggestion buttons */
+
+.chat-suggestions {
+  display: flex !important;
+
+  flex-wrap: wrap !important;
+
+  gap: 7px !important;
+
+  margin-top: 8px !important;
+}
+
+.chat-suggestions button {
+  width: auto !important;
+
+  padding: 7px 11px !important;
+
+  margin: 0 !important;
+
+  border: 1px solid #4caf50 !important;
+
+  border-radius: 16px !important;
+
+  background: white !important;
+
+  color: #2e7d32 !important;
+
+  font-size: 11px !important;
+
+  cursor: pointer !important;
+}
+
+.chat-suggestions button:hover {
+  background: #e8f5e9 !important;
+}
+
+
+/* Chat input */
+
+.vital-chat-input {
+  flex-shrink: 0 !important;
+
+  display: flex !important;
+
+  align-items: center !important;
+
+  gap: 8px !important;
+
+  padding: 12px !important;
+
+  border-top: 1px solid #e3e6e4 !important;
+
+  background: white !important;
+}
+
+.vital-chat-input input {
+  flex: 1 !important;
+
+  width: auto !important;
+  height: 42px !important;
+
+  box-sizing: border-box !important;
+
+  padding: 0 15px !important;
+  margin: 0 !important;
+
+  border: 1px solid #d6d9d7 !important;
+
+  border-radius: 22px !important;
+
+  background: #f9faf9 !important;
+
+  color: #333 !important;
+
+  font-size: 14px !important;
+
+  outline: none !important;
+}
+
+.vital-chat-input input:focus {
+  border-color: #4caf50 !important;
+  background: white !important;
+}
+
+.vital-chat-input button {
+  flex-shrink: 0 !important;
+
+  width: 42px !important;
+  height: 42px !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  border: none !important;
+  border-radius: 50% !important;
+
+  background: #4caf50 !important;
+  color: white !important;
+
+  font-size: 17px !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  cursor: pointer !important;
+}
+
+.vital-chat-input button:hover {
+  background: #43a047 !important;
+}
+
+
+/* Chat scrollbar */
+
+.vital-chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.vital-chat-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.vital-chat-messages::-webkit-scrollbar-thumb {
+  background: #c8cfca;
+  border-radius: 10px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .suggestion-list {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrition-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .dashboard {
+    padding: 25px;
+  }
+
+  .profile-page,
+  .progress-page {
+    padding: 25px 15px;
+  }
+
+  .profile-card,
+  .progress-card,
+  .foodlog-card {
+    padding: 25px;
+  }
+
+  .progress-card form {
+    flex-direction: column;
+  }
+
+  .progress-card form button {
+    width: 100%;
+  }
+
+  .progress-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .meal-item {
+    flex-wrap: wrap;
+  }
+
+  .exercise-card {
+    padding: 25px 20px;
+  }
+
+  .exercise-card form {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exercise-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .exercise-item button {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .nutrition-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .navbar {
+    padding: 0 15px;
+  }
+
+  .logout-btn {
+    padding: 8px 12px;
+  }
+
+  .dashboard {
+    padding: 20px 15px;
+  }
+
+  .dashboard h1 {
+    font-size: 26px;
+  }
+
+  .foodlog-card,
+  .profile-card,
+  .progress-card {
+    padding: 20px;
+  }
+
+  .vital-chatbot {
+    right: 10px !important;
+    bottom: 85px !important;
+
+    width: calc(100vw - 20px) !important;
+    height: 70vh !important;
+
+    border-radius: 16px !important;
+  }
+
+  .vital-chat-button {
+    right: 15px !important;
+    bottom: 15px !important;
+  }
+  /* =========================
+   CHAT RECIPE LINKS
+========================= */
+
+/* Chatbot recipe links */
+
+.chat-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 9px 12px;
+  border-radius: 10px;
+  background: #f1f8f3;
+  border: 1px solid #4caf50;
+  color: #2e7d32;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  transition: 0.2s ease;
+}
+
+.chat-link:hover {
+  background: #e8f5e9;
+  transform: translateY(-1px);
+}
 }

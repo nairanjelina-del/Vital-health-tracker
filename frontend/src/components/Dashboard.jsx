@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import MacroBar from "./MacroBar";
+import { generateRecommendations } from "../ai/recommendationEngine";
 
 function Dashboard() {
   const savedProfile =
@@ -12,14 +13,12 @@ function Dashboard() {
       carbs: 200,
       fat: 60,
     },
-
     gain: {
       calories: 2500,
       protein: 120,
       carbs: 300,
       fat: 80,
     },
-
     maintenance: {
       calories: 2000,
       protein: 100,
@@ -45,22 +44,19 @@ function Dashboard() {
   }, []);
 
   useEffect(() => {
-  const savedWater = localStorage.getItem("vitalWater");
+    const savedWater = localStorage.getItem("vitalWater");
+    const today = new Date().toISOString().split("T")[0];
 
-  const today = new Date()
-    .toISOString()
-    .split("T")[0];
+    if (savedWater) {
+      const waterData = JSON.parse(savedWater);
 
-  if (savedWater) {
-    const waterData = JSON.parse(savedWater);
-
-    if (waterData.date === today) {
-      setWater(waterData.amount);
-    } else {
-      setWater(0);
+      if (waterData.date === today) {
+        setWater(waterData.amount);
+      } else {
+        setWater(0);
+      }
     }
-  }
-}, []);
+  }, []);
 
   useEffect(() => {
     const savedExercises =
@@ -71,33 +67,15 @@ function Dashboard() {
     }
   }, []);
 
-  /* =========================================
-     TODAY'S DATE
-  ========================================= */
-
-  const today = new Date()
-    .toISOString()
-    .split("T")[0];
-
-  /* =========================================
-     TODAY'S FOOD
-  ========================================= */
+  const today = new Date().toISOString().split("T")[0];
 
   const todaysFoods = foods.filter(
     (item) => item.date === today
   );
 
-  /* =========================================
-     TODAY'S EXERCISE
-  ========================================= */
-
   const todaysExercises = exercises.filter(
     (item) => item.date === today
   );
-
-  /* =========================================
-     TODAY'S NUTRITION TOTALS
-  ========================================= */
 
   const totals = todaysFoods.reduce(
     (total, item) => ({
@@ -121,10 +99,6 @@ function Dashboard() {
     }
   );
 
-  /* =========================================
-     TODAY'S EXERCISE TOTALS
-  ========================================= */
-
   const exerciseTotals = todaysExercises.reduce(
     (total, item) => ({
       duration:
@@ -139,6 +113,21 @@ function Dashboard() {
     }
   );
 
+  const recommendations = generateRecommendations({
+    profile: savedProfile,
+
+    totals: {
+      ...totals,
+      calorieTarget: targets.calories,
+      proteinTarget: targets.protein,
+      carbsTarget: targets.carbs,
+    },
+
+    water,
+
+    exerciseMinutes: exerciseTotals.duration,
+  });
+
   return (
     <div className="dashboard">
 
@@ -148,17 +137,11 @@ function Dashboard() {
         Track your nutrition and stay on top of your health goals.
       </p>
 
-
-      {/* =========================================
-          DASHBOARD CARDS
-      ========================================= */}
+      {/* DASHBOARD CARDS */}
 
       <div className="dashboard-cards">
 
-        {/* NUTRITION */}
-
         <div className="card">
-
           <h2>Today's Nutrition</h2>
 
           <MacroBar
@@ -181,14 +164,9 @@ function Dashboard() {
             target={targets.fat}
             unit="g"
           />
-
         </div>
 
-
-        {/* CALORIES */}
-
         <div className="card">
-
           <h2>Today's Calories</h2>
 
           <div className="calorie-number">
@@ -198,14 +176,9 @@ function Dashboard() {
           <p>
             of {targets.calories.toLocaleString()} kcal target
           </p>
-
         </div>
 
-
-        {/* WEIGHT */}
-
         <div className="card">
-
           <h2>Current Weight</h2>
 
           <div className="weight-number">
@@ -215,14 +188,9 @@ function Dashboard() {
           <p>
             Goal: {savedProfile.goalWeight || 0} kg
           </p>
-
         </div>
 
-
-        {/* EXERCISE */}
-
         <div className="card">
-
           <h2>Today's Exercise 🏃</h2>
 
           <div className="calorie-number">
@@ -232,15 +200,11 @@ function Dashboard() {
           <p>
             {exerciseTotals.calories} kcal burned
           </p>
-
         </div>
 
       </div>
 
-
-      {/* =========================================
-          WATER TRACKER
-      ========================================= */}
+      {/* WATER */}
 
       <div className="card">
 
@@ -264,197 +228,116 @@ function Dashboard() {
 
         </div>
 
+        <button
+          className="water-btn"
+          onClick={() => {
 
-       <button
-  className="water-btn"
-  onClick={() => {
+            if (water < 8) {
 
-    if (water < 8) {
+              const newWater = water + 1;
 
-      const newWater = water + 1;
+              setWater(newWater);
 
-      setWater(newWater);
+              localStorage.setItem(
+                "vitalWater",
+                JSON.stringify({
+                  date: today,
+                  amount: newWater,
+                })
+              );
+            }
 
-      const today = new Date()
-        .toISOString()
-        .split("T")[0];
+          }}
+        >
+          Add Glass
+        </button>
 
-      localStorage.setItem(
-  "vitalWater",
-  JSON.stringify({
-    date: today,
-    amount: newWater,
-  })
-);
-    }
+        <button
+          className="water-reset-btn"
+          onClick={() => {
 
-  }}
->
-  Add Glass
-</button>
+            setWater(0);
 
-<button
-  className="water-reset-btn"
-  onClick={() => {
+            localStorage.setItem(
+              "vitalWater",
+              JSON.stringify({
+                date: today,
+                amount: 0,
+              })
+            );
 
-    setWater(0);
-
-    const today = new Date()
-      .toISOString()
-      .split("T")[0];
-
-    localStorage.setItem(
-      "vitalWater",
-      JSON.stringify({
-        date: today,
-        amount: 0,
-      })
-    );
-
-  }}
->
-  Reset
-</button>
+          }}
+        >
+          Reset
+        </button>
 
       </div>
 
-
-      {/* =========================================
-          AI MEAL SUGGESTIONS
-      ========================================= */}
+      {/* AI HEALTH ASSISTANT */}
 
       <div className="ai-suggestions">
 
-        <h2>AI Meal Suggestions</h2>
+        <h2>
+          🤖 Vital AI Health Assistant
+        </h2>
 
         <p>
-          Personalized meal ideas based on your nutrition goals.
+          Personalized suggestions based on your
+          nutrition, hydration, exercise and goal.
         </p>
-
 
         <div className="suggestion-list">
 
+          {recommendations.length === 0 ? (
 
-          {/* WEIGHT LOSS */}
+            <div className="suggestion-card">
 
-          {savedProfile.goal === "loss" && (
-            <>
+              <h3>
+                🎉 You're doing great!
+              </h3>
 
-              <div className="suggestion-card">
+              <p>
+                Your current nutrition and activity
+                levels are looking balanced today.
+              </p>
 
-                <h3>Vegetable Oats Bowl</h3>
+            </div>
 
-                <p>
-                  A filling option with fiber and balanced carbohydrates.
-                </p>
+          ) : (
 
-              </div>
+            recommendations.map(
+              (recommendation, index) => (
 
+                <div
+                  className="suggestion-card"
+                  key={index}
+                >
 
-              <div className="suggestion-card">
+                  <h3>
+                    {recommendation.title}
+                  </h3>
 
-                <h3>Dal & Roti</h3>
+                  <p>
+                    {recommendation.description}
+                  </p>
 
-                <p>
-                  A balanced meal with protein and carbohydrates.
-                </p>
+                  {recommendation.calories && (
+                    <small>
+                      Approx. {recommendation.calories} kcal
+                    </small>
+                  )}
 
-              </div>
+                  {recommendation.protein && (
+                    <small>
+                      {" "}• {recommendation.protein}g protein
+                    </small>
+                  )}
 
+                </div>
 
-              <div className="suggestion-card">
+              )
+            )
 
-                <h3>Paneer Salad Bowl</h3>
-
-                <p>
-                  A protein-rich meal with vegetables.
-                </p>
-
-              </div>
-
-            </>
-          )}
-
-
-          {/* WEIGHT GAIN */}
-
-          {savedProfile.goal === "gain" && (
-            <>
-
-              <div className="suggestion-card">
-
-                <h3>Paneer Rice Bowl</h3>
-
-                <p>
-                  A higher-energy meal with protein and carbohydrates.
-                </p>
-
-              </div>
-
-
-              <div className="suggestion-card">
-
-                <h3>Peanut Banana Oats</h3>
-
-                <p>
-                  A calorie-dense option with carbohydrates and healthy fats.
-                </p>
-
-              </div>
-
-
-              <div className="suggestion-card">
-
-                <h3>Dal Rice & Curd</h3>
-
-                <p>
-                  A balanced meal providing energy and protein.
-                </p>
-
-              </div>
-
-            </>
-          )}
-
-
-          {/* MAINTENANCE */}
-
-          {savedProfile.goal === "maintenance" && (
-            <>
-
-              <div className="suggestion-card">
-
-                <h3>Vegetable Pulao</h3>
-
-                <p>
-                  A balanced meal with vegetables and carbohydrates.
-                </p>
-
-              </div>
-
-
-              <div className="suggestion-card">
-
-                <h3>Dal & Roti</h3>
-
-                <p>
-                  A balanced combination of protein and carbohydrates.
-                </p>
-
-              </div>
-
-
-              <div className="suggestion-card">
-
-                <h3>Paneer Salad Bowl</h3>
-
-                <p>
-                  A balanced protein-rich meal with vegetables.
-                </p>
-
-              </div>
-
-            </>
           )}
 
         </div>
