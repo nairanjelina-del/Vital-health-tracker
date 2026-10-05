@@ -1,23 +1,43 @@
-import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
-const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true, lowercase: true },
-  password: { type: String, required: true }
-}, { timestamps: true });
+const userSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true, trim: true },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true
+    },
+    password: { type: String, required: true, minlength: 6 },
 
-// Hash password before saving
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
+    // Profile fields (match Profile.jsx)
+    age: { type: Number },
+    gender: { type: String, enum: ["male", "female", "other", ""], default: "" },
+    height: { type: Number },        // cm
+    currentWeight: { type: Number }, // kg
+    goalWeight: { type: Number },    // kg
+    goal: { type: String, enum: ["loss", "gain", "maintenance", ""], default: "" },
+    diet: {
+      type: String,
+      enum: ["vegetarian", "eggetarian", "non-vegetarian", ""],
+      default: ""
+    }
+  },
+  { timestamps: true }
+);
+
+userSchema.pre("save", async function () {
+  if (!this.isModified("password")) return;
+  this.password = await bcrypt.hash(this.password, 10);
 });
 
-// Compare password method
-userSchema.methods.matchPassword = async function(enteredPassword) {
+userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
-export default mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
+
+export default User;

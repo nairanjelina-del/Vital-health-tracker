@@ -1,105 +1,90 @@
 import { useState, useEffect } from "react";
+import API, { todayLocal } from "../services/api";
+
+const emptyForm = () => ({
+  type: "Walking",
+  duration: "",
+  calories: "",
+  date: todayLocal(),
+});
 
 function ExerciseLog() {
-  const [exercise, setExercise] = useState({
-    type: "Walking",
-    duration: "",
-    calories: "",
-    date: new Date().toISOString().split("T")[0],
-  });
-
+  const [exercise, setExercise] = useState(emptyForm());
   const [exercises, setExercises] = useState([]);
+  const [error, setError] = useState("");
 
+  // Load this user's logs from the database
   useEffect(() => {
-    const savedExercises =
-      localStorage.getItem("vitalExercises");
-
-    if (savedExercises) {
-      setExercises(JSON.parse(savedExercises));
-    }
+    const loadExercises = async () => {
+      try {
+        const res = await API.get("/health/exercise");
+        setExercises(res.data);
+      } catch (err) {
+        setError(err.response?.data?.message || "Could not load exercise logs");
+      }
+    };
+    loadExercises();
   }, []);
 
-  const today = new Date().toISOString().split("T")[0];
+  const today = todayLocal();
 
   const todaysExercises = exercises.filter(
-    (item) => item.date === today
+    (item) => item.date.slice(0, 10) === today
   );
 
   const exerciseTotals = todaysExercises.reduce(
     (total, item) => ({
-      duration:
-        total.duration + Number(item.duration),
-      calories:
-        total.calories + Number(item.calories),
+      duration: total.duration + (Number(item.durationMinutes) || 0),
+      calories: total.calories + (Number(item.caloriesBurned) || 0),
     }),
-    {
-      duration: 0,
-      calories: 0,
-    }
+    { duration: 0, calories: 0 }
   );
 
   const handleChange = (e) => {
-    setExercise({
-      ...exercise,
-      [e.target.name]: e.target.value,
-    });
+    setExercise({ ...exercise, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    const updatedExercises = [
-      ...exercises,
-      exercise,
-    ];
+    try {
+      const res = await API.post("/health/exercise", {
+        exerciseName: exercise.type,
+        durationMinutes: exercise.duration,
+        caloriesBurned: exercise.calories,
+        date: exercise.date,
+      });
 
-    setExercises(updatedExercises);
-
-    localStorage.setItem(
-      "vitalExercises",
-      JSON.stringify(updatedExercises)
-    );
-
-    setExercise({
-      type: "Walking",
-      duration: "",
-      calories: "",
-      date: new Date().toISOString().split("T")[0],
-    });
+      setExercises([res.data, ...exercises]);
+      setExercise(emptyForm());
+    } catch (err) {
+      setError(err.response?.data?.message || "Could not save exercise");
+    }
   };
 
-  const handleDelete = (itemToDelete) => {
-    const updatedExercises = exercises.filter(
-      (item) => item !== itemToDelete
-    );
-
-    setExercises(updatedExercises);
-
-    localStorage.setItem(
-      "vitalExercises",
-      JSON.stringify(updatedExercises)
-    );
+  const handleDelete = async (id) => {
+    setError("");
+    try {
+      await API.delete(`/health/exercise/${id}`);
+      setExercises(exercises.filter((item) => item._id !== id));
+    } catch (err) {
+      setError(err.response?.data?.message || "Could not delete exercise");
+    }
   };
 
   return (
     <div className="exercise-page">
       <div className="exercise-card">
-
         <h1>Exercise Log 🏃</h1>
 
-        <p>
-          Track your daily physical activity and stay active.
-        </p>
+        <p>Track your daily physical activity and stay active.</p>
+
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
         {/* EXERCISE FORM */}
-
         <form onSubmit={handleSubmit}>
-
-          <select
-            name="type"
-            value={exercise.type}
-            onChange={handleChange}
-          >
+          <select name="type" value={exercise.type} onChange={handleChange}>
             <option>Walking</option>
             <option>Running</option>
             <option>Cycling</option>
@@ -126,86 +111,51 @@ function ExerciseLog() {
             required
           />
 
-          <button type="submit">
-            Add Exercise
-          </button>
-
+          <button type="submit">Add Exercise</button>
         </form>
 
         {/* TODAY'S EXERCISE SUMMARY */}
-
         <div className="exercise-summary">
-
           <h2>Today's Exercise</h2>
 
           <div className="exercise-summary-grid">
-
             <div>
-              <strong>
-                {exerciseTotals.duration}
-              </strong>
-
+              <strong>{exerciseTotals.duration}</strong>
               <span> min</span>
-
               <p>Duration</p>
             </div>
 
             <div>
-              <strong>
-                {exerciseTotals.calories}
-              </strong>
-
+              <strong>{exerciseTotals.calories}</strong>
               <span> kcal</span>
-
               <p>Calories Burned</p>
             </div>
-
           </div>
-
         </div>
 
         {/* TODAY'S EXERCISE HISTORY */}
-
         <div className="exercise-history">
-
           <h2>Today's Activities</h2>
 
           {todaysExercises.length === 0 ? (
             <p>No exercise added today.</p>
           ) : (
-            todaysExercises.map((item, index) => (
-              <div
-                className="exercise-item"
-                key={index}
-              >
-
+            todaysExercises.map((item) => (
+              <div className="exercise-item" key={item._id}>
                 <div>
-                  <strong>{item.type}</strong>
-
-                  <p>
-                    {item.duration} minutes
-                  </p>
+                  <strong>{item.exerciseName}</strong>
+                  <p>{item.durationMinutes} minutes</p>
                 </div>
 
-                <span>
-                  {item.calories} kcal
-                </span>
+                <span>{item.caloriesBurned} kcal</span>
 
-                <button
-                  type="button"
-                  onClick={() =>
-                    handleDelete(item)
-                  }
-                >
+                <button type="button" onClick={() => handleDelete(item._id)}>
                   Delete
                 </button>
-
               </div>
             ))
           )}
-
         </div>
-
       </div>
     </div>
   );

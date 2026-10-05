@@ -1,8 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
+import { clearSession } from "../services/api";
+
 
 function Navbar() {
   const navigate = useNavigate();
-
+  const handleLogout = () => {
+  clearSession();
+  navigate("/");
+};
   return (
     <nav className="navbar">
       <div className="logo">
@@ -19,7 +24,7 @@ function Navbar() {
 
       <button
         className="logout-btn"
-        onClick={() => navigate("/")}
+        onClick={handleLogout}
       >
         Logout
       </button>

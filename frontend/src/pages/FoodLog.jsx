@@ -1,126 +1,103 @@
 import { useState, useEffect } from "react";
+import API, { todayLocal } from "../services/api";
+
+const emptyForm = () => ({
+  meal: "Breakfast",
+  name: "",
+  calories: "",
+  protein: "",
+  carbs: "",
+  fat: "",
+  date: todayLocal(),
+});
+
+const foodSuggestions = [
+  "Poha", "Dal Rice", "Roti", "Paneer", "Banana",
+  "Apple", "Idli", "Dosa", "Upma", "Vegetable Pulao",
+];
 
 function FoodLog() {
-  const [food, setFood] = useState({
-    meal: "Breakfast",
-    name: "",
-    calories: "",
-    protein: "",
-    carbs: "",
-    fat: "",
-    date: new Date().toISOString().split("T")[0],
-  });
-
+  const [food, setFood] = useState(emptyForm());
   const [foods, setFoods] = useState([]);
+  const [error, setError] = useState("");
 
+  // Load this user's logs from the database
   useEffect(() => {
-    const savedFoods = localStorage.getItem("vitalFoods");
-
-    if (savedFoods) {
-      setFoods(JSON.parse(savedFoods));
-    }
+    const loadFoods = async () => {
+      try {
+        const res = await API.get("/health/food");
+        setFoods(res.data);
+      } catch (err) {
+        setError(err.response?.data?.message || "Could not load food logs");
+      }
+    };
+    loadFoods();
   }, []);
 
-  // Today's date
-  const today = new Date().toISOString().split("T")[0];
+  const today = todayLocal();
 
-  // Only today's food entries
-  const todaysFoods = foods.filter(
-    (item) => item.date === today
-  );
+  // item.date comes back as an ISO string, e.g. "2026-10-05T00:00:00.000Z"
+  const todaysFoods = foods.filter((item) => item.date.slice(0, 10) === today);
 
-  // Calculate today's nutrition
   const totals = todaysFoods.reduce(
     (total, item) => ({
-      calories: total.calories + Number(item.calories),
-      protein: total.protein + Number(item.protein),
-      carbs: total.carbs + Number(item.carbs),
-      fat: total.fat + Number(item.fat),
+      calories: total.calories + (Number(item.calories) || 0),
+      protein: total.protein + (Number(item.protein) || 0),
+      carbs: total.carbs + (Number(item.carbs) || 0),
+      fat: total.fat + (Number(item.fat) || 0),
     }),
-    {
-      calories: 0,
-      protein: 0,
-      carbs: 0,
-      fat: 0,
-    }
+    { calories: 0, protein: 0, carbs: 0, fat: 0 }
   );
 
-  // Food suggestions
-  const foodSuggestions = [
-    "Poha",
-    "Dal Rice",
-    "Roti",
-    "Paneer",
-    "Banana",
-    "Apple",
-    "Idli",
-    "Dosa",
-    "Upma",
-    "Vegetable Pulao",
-  ];
-
   const handleChange = (e) => {
-    setFood({
-      ...food,
-      [e.target.name]: e.target.value,
-    });
+    setFood({ ...food, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    const updatedFoods = [...foods, food];
+    try {
+      const res = await API.post("/health/food", {
+        meal: food.meal,
+        foodItem: food.name,
+        calories: food.calories,
+        protein: food.protein,
+        carbs: food.carbs,
+        fat: food.fat,
+        date: food.date,
+      });
 
-    setFoods(updatedFoods);
-
-    localStorage.setItem(
-      "vitalFoods",
-      JSON.stringify(updatedFoods)
-    );
-
-    // Reset form
-    setFood({
-      meal: "Breakfast",
-      name: "",
-      calories: "",
-      protein: "",
-      carbs: "",
-      fat: "",
-      date: new Date().toISOString().split("T")[0],
-    });
+      // Use what the database returned (it has the real _id)
+      setFoods([res.data, ...foods]);
+      setFood(emptyForm());
+    } catch (err) {
+      setError(err.response?.data?.message || "Could not save food");
+    }
   };
 
-  const handleDelete = (itemToDelete) => {
-    const updatedFoods = foods.filter(
-      (item) => item !== itemToDelete
-    );
-
-    setFoods(updatedFoods);
-
-    localStorage.setItem(
-      "vitalFoods",
-      JSON.stringify(updatedFoods)
-    );
+  const handleDelete = async (id) => {
+    setError("");
+    try {
+      await API.delete(`/health/food/${id}`);
+      setFoods(foods.filter((item) => item._id !== id));
+    } catch (err) {
+      setError(err.response?.data?.message || "Could not delete food");
+    }
   };
 
   return (
     <div className="foodlog-page">
       <div className="foodlog-card">
-
         <h1>Food Log 🍽️</h1>
 
-        <p>
-          Track what you eat and stay on top of your daily nutrition.
-        </p>
+        <p>Track what you eat and stay on top of your daily nutrition.</p>
+
+        {error && <p style={{ color: "red" }}>{error}</p>}
 
         {/* FOOD FORM */}
         <form onSubmit={handleSubmit}>
-
-          <select
-            name="meal"
-            value={food.meal}
-            onChange={handleChange}
-          >
+          <select name="meal" value={food.meal} onChange={handleChange}>
             <option>Breakfast</option>
             <option>Lunch</option>
             <option>Dinner</option>
@@ -141,20 +118,13 @@ function FoodLog() {
             <div className="suggestions">
               {foodSuggestions
                 .filter((item) =>
-                  item
-                    .toLowerCase()
-                    .includes(food.name.toLowerCase())
+                  item.toLowerCase().includes(food.name.toLowerCase())
                 )
                 .map((item, index) => (
                   <div
                     className="suggestion-item"
                     key={index}
-                    onClick={() => {
-                      setFood({
-                        ...food,
-                        name: item,
-                      });
-                    }}
+                    onClick={() => setFood({ ...food, name: item })}
                   >
                     {item}
                   </div>
@@ -198,19 +168,14 @@ function FoodLog() {
             required
           />
 
-          <button type="submit">
-            Add Food
-          </button>
-
+          <button type="submit">Add Food</button>
         </form>
 
         {/* TODAY'S NUTRITION */}
         <div className="nutrition-summary">
-
           <h2>Today's Nutrition</h2>
 
           <div className="nutrition-grid">
-
             <div>
               <strong>{totals.calories}</strong>
               <span> kcal</span>
@@ -234,47 +199,32 @@ function FoodLog() {
               <span> g</span>
               <p>Fat</p>
             </div>
-
           </div>
-
         </div>
 
         {/* TODAY'S MEALS */}
         <div className="meal-section">
-
           <h2>Today's Meals</h2>
 
           {todaysFoods.length === 0 ? (
             <p>No food added today.</p>
           ) : (
-            todaysFoods.map((item, index) => (
-              <div
-                className="meal-item"
-                key={index}
-              >
-
+            todaysFoods.map((item) => (
+              <div className="meal-item" key={item._id}>
                 <div>
-                  <strong>{item.name}</strong>
+                  <strong>{item.foodItem}</strong>
                   <span> ({item.meal})</span>
                 </div>
 
-                <span>
-                  {item.calories} kcal
-                </span>
+                <span>{item.calories} kcal</span>
 
-                <button
-                  type="button"
-                  onClick={() => handleDelete(item)}
-                >
+                <button type="button" onClick={() => handleDelete(item._id)}>
                   Delete
                 </button>
-
               </div>
             ))
           )}
-
         </div>
-
       </div>
     </div>
   );
